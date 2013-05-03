@@ -48,4 +48,4 @@ var encodeSMS = function() {
         }, function(fail) {
             alert("Encoding failed: " + fail);
         });
-}Enter file contents here
+}
