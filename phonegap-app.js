@@ -212,4 +212,3 @@ function $(id) {
     return element
 }
 
-Enter file contents here
