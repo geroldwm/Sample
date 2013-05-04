@@ -1,22 +1,348 @@
+ 
+
 <!DOCTYPE HTML>
 <html>
-  <head>
+   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
-    <title>Bar Code Scanner</title>
-    <link rel="stylesheet" href="main.css" type="text/css">
-    <script type="text/javascript" src="main.js"></script>
+    
+     <title >eRx Express</title>
+     <link rel="stylesheet" href="main.css" type="text/css">
+      <script type="text/javascript" src="jquery.min.js"></script>
 
+       <script type="text/javascript">
+       
+           /*
+           async: true,
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        url: "../../Services/RunningBarbusService.svc/GetTeamData",
+        dataType: "json",
+        data: '{"teamId":"' + teamId + '", "weekNumber":"' + weekNumber + '"}',
+        success: function (content) {
+            DisplayRun(map, content);
+        }
+*/
+    </script>    
   </head>
-  <body id="stage" class="theme">
-    <h1>Barcode Scanner and Encoder</h1>
-    <h2>PhoneGap Barcode Scanner Plugin</h2>
+
+
+  <body onload="pageInit();" style="background-color:white;" class="theme">
+
+      <div class="headerArea" style=" ">
+          <img id="logo" src="images/eRxExpres.jpg" style="width:55%;"/>
+          <button id="signIn" class="accountButton" style="position:absolute;">Sign In</button>
+          <button id="signOut" class="accountButton" style="position:absolute; visibility:hidden;">Sign Out</button>
+      </div>
+
+      <!-- variables -------------------------- --> 
+      <input type="button" style="visibility:hidden" id="deviceId" value="12345" />
+      <input type="button" style="visibility:hidden" id="SCID" value="12JVRJ4M5KYJ4DRV71" />
+      <input type="button" style="visibility:hidden" id="ScriptId" value="41" />
+      <!-- ----------------------------------- --> 
+      
+      <!-- ----------------------------------- --> 
+       <div class="contentArea" id="pageHome">    
+          
+           <div style="height:50px;"></div>
+
+          <input type="button" id="scanCode" class="button" value="Scan Code" />
+          <br />
+          <br />
+          <input type="button" id="getScriptId" class="button" value="Get Script Detail" />
+
+
+          <br />
+          <br />
+          <input type="button" id="selectDrug" class="button" value="Select Drug" />
+
+        <div style="margin-top:30px; color:black; text-align:center; font-family:Verdana,Arial; font-size:10pt; ">
+            <span id="InfoSCID"></span><br />
+            <span id="InfoScriptId"></span>
+         </div>
+      </div>
+
+
+      <!-- ----------------------------------- --> 
+
+     <div class="contentArea" id="pageLogin">    
+         <span class="pageTitle">Login</span>
+
+         <div style="height:30px;"></div>
+         <span class="pageText" style="width:120px;">User Name </span><input type="text" id="loginUsername" value="" style="width:150px;"  />
+         <br />
+         <br />
+         <span class="pageText">Password&nbsp;</span> <input type="password" id="loginPassword" value="" style="width:150px;" />
+          <br />
+          <br />
+          <input type="button" id="loginOk" class="okButton" value="Ok" />
+          <input type="button" id="loginCancel" class="cancelButton" value="Cancel" />
+     </div>
+
+      <!-- ----------------------------------- --> 
+
+     <div class="contentArea" id="pageDrug">    
+         <span class="pageTitle">Select Drug</span>
+         <div style="height:10px;"></div>
+         <input type="button" id="selDrugHome" class="homeButton" value="Home"/>
+         <br />
+          <br />
+          <br />
+          <br />
+          <input type="button" id="selDrugOk" class="dialogButton" value="Continue" />
+          <input type="button" id="selDrugBack" class="dialogButton" value="Back" />
+
+     </div>
+
+      <!-- ----------------------------------- --> 
+
+      <div class="contentArea" id="pagePharmacy">    
+          <span class="pageTitle">Select Pharmacy>/span>
+
+         <br />
+          <br />
+         
+         <input type="button" id="selPharmacyOk" class="dialogButton" value="Continue" />
+         <input type="button" id="selPharmacyCancel" class="dialogButton" value="Back" />
+
+     </div>
+
+      <!-- ----------------------------------- --> 
+
+     <div class="contentArea" id="pageConfirm">    
+         
+         <span class="pageTitle">Confirm Order</span>
+
+          <br />
+          <br />
+          <input type="button" id="confirmOk" class="dialogButton" value="Continue" />
+         <input type="button" id="confirmCancel" class="dialogButton" value="Back" />
+
+     </div>
+
+      <!-- ----------------------------------- --> 
+
+      <div class="contentArea" id="pageSettings">    
+          <span class="pageTitle">Confirm Settings</span>
+
+          <br />
+          <br />
+          <br />
+          <input type="button" id="settingsClose" class="dialogButton" value="Back" />
+     </div>
+
+      <!-- ----------------------------------- --> 
+      <!-- ----------------------------------- --> 
     
-    <a href="#" class="btn" onclick="scanCode();">Scan Code</a>
-    
-    <a href="#" class="btn enc" onclick="encodeText();">Encode Text</a> 
-    <a href="#" class="btn enc" onclick="encodeEmail();">Encode Email</a>   
-    <a href="#" class="btn enc" onclick="encodePhone();">Encode Phone</a>   
-    <a href="#" class="btn enc" onclick="encodeSMS();">Encode SMS</a>   
+    <script>
+        //ScannedSCID
+        $("#scanCode").click(function (event) {
+            ScanCode();
+        });
+
+        $("#getScriptId").click(function (event) {
+            GetScriptId();
+        });
+
+        $("#getScriptDetails").click(function (event) {
+            GetScriptDetails();
+        });
+
+        function ScanCode() {
+            // show scanned SCID, ID
+
+            $("#InfoSCID").text('Script: ' + $('#SCID').val());
+            $("#InfoScriptId").text('Id: ' + $('#ScriptId').val());
+
+            // ShowDrugs();
+        }
+
+
+        function GetScriptId() {
+
+            alert("Get Script Id for " + $('#deviceId').val() + " " + $('#SCID').val());
+
+            $.ajax({
+                type: "GET",
+                async: "false",
+                url: "http://6082ade8bf5f4339aa46229bed13fa85.cloudapp.net/erxExpressService.svc/RequestScript",
+                // data: '{"deviceId":"' + $('#deviceId').val() + '", "scriptID":"' + $('#SCID').val() + '"}',
+                data: 'deviceId=' + $('#deviceId').val() + '&scriptID=' + $('#SCID').val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                // processData: true,
+                success: function (msg) {
+                    AjaxSucceeded(msg);
+                },
+                error: AjaxFailed
+            });
+
+            alert("done");
+        }
+
+
+        function GetScriptDetails() {
+
+            alert("Get Script Details Id for " + $('#deviceId').val() + " " + $('#ScriptId').val());
+
+            $.ajax({
+                type: "GET",
+                async: "false",
+                url: "http://6082ade8bf5f4339aa46229bed13fa85.cloudapp.net/erxExpressService.svc/GetScriptData",
+                data: '{"DeviceId":"' + $('#deviceId').val() + '", "ScriptID":"' + $('#ScriptId').val() + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    AjaxSucceeded(msg);
+                },
+                error: AjaxFailed
+            });
+
+            alert("done");
+        }
+
+        function AjaxSucceeded(result) {
+            alert(result.d);
+        }
+
+        function AjaxFailed(result) {
+            alert('Failed: ' + result.status + ' ' + result.statusText);
+        }
+
+        // -----------------------------------------
+
+        function pageInit() {
+            hide_all_containers(1);
+        }
+
+        function hide_container(id) {
+            $("#" + id).fadeTo(100, 0);
+            $("#" + id).hide();
+
+            // $('#pageDrug').css('visibility', 'visible');
+        }
+
+        function show_container(id) {
+            $("#" + id).fadeTo(200, 1);
+        }
+
+        function hideElement(id) {
+            $('#' + id).css('visibility', 'hidden');
+        }
+
+        function showElement(id) {
+            $('#' + id).css('visibility', 'visible');
+        }
+
+
+        function hide_all_containers(init) {
+
+            if (init != 1) {
+                hide_container("pageHome");
+            }
+            
+            hide_container("pageLogin");
+            hide_container("pageDrug");
+            hide_container("pagePharmacy");
+            hide_container("pageConfirm");
+            hide_container("pageSettings");
+        }
+
+        <!-- ------------------------------------------------------ -->
+
+        
+        $("#logo").click(function () {
+            homePage();    
+        });
+        
+
+        <!-- ------------------------------------------------------ -->
+
+        $("#signIn").click(function () {
+            hide_all_containers();
+
+            show_container("pageLogin");
+
+            // hideElement("signIn");
+        });
+
+        $("#loginCancel").click(function () {
+            // alert('Cancel');
+            hide_all_containers();
+            show_container("pageHome");
+            ShowElement("signIn");
+        });
+
+        $("#loginOk").click(function () {
+            // alert('ok');
+            hide_all_containers();
+
+            show_container("pageHome");
+
+            ShowElement("signOut");
+        });
+
+
+        function clearScript() {
+
+            $("#InfoSCID").text("");
+            $("#InfoScriptId").text("");
+        }
+        
+        
+        $("#selDrugHome").click(function () {
+            homePage();
+        });
+
+        function homePage() {
+            hide_all_containers();
+            clearScript();
+            show_container("pageHome");
+        }
+
+
+        <!-- ----------------------------------------  -->
+
+        $("#selectDrug").click(function () {
+            ShowDrugs();
+        });
+
+        $("#selDrugHome").click(function () {
+            homePage();
+        });
+
+        $("#selDrugOk").click(function () {
+            hide_all_containers();
+            show_container("pagePharmacy");
+        });
+        
+        $("#selDrugCancel").click(function () {
+            hide_all_containers();
+
+            show_container("pageHome");
+        });
+
+        function ShowDrugs() {
+            hide_all_containers();
+            show_container("pageDrug");
+        }
+
+
+
+        <!-- ----------------------------------------  -->
+
+
+
+        $("#selPharmacyOk").click(function () {
+            hide_all_containers();
+            show_container("pageConfirm");
+        });
+
+
+      
+        
+        
+    </script>
+
   </body>
 </html>
