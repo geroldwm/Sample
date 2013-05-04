@@ -1,16 +1,131 @@
 body {
+    /*
     background:#336 none repeat scroll 0 0;
-    color:#77a;
+        */
+    color:white;
     font-family:Helvetica;
-    font-size:72%;
-    line-height:1.5em;
     margin:0;
     border-top:1px solid #393939;
   }
 
+
+.headerArea {
+    background-color:azure; 
+    padding-top:5px;
+    padding-left:5px;
+     height:36px;
+     border-bottom-width:1px; 
+     border-bottom-color:silver; 
+     border-bottom-style:solid;
+}
+
+.contentArea {
+    position:absolute;
+    width:100%;
+    background-color:white; 
+    text-align:center; 
+    padding-top:0px;
+    color:black;
+    font-size:14pt;
+}
+
+.accountButton {
+    border-width:1px; 
+    border-color:silver; 
+    padding:3px; 
+    right:5px; 
+    width:80px; 
+    margin-top:3px;
+    background-color:#193067; 
+    color:white;
+}
+
+.smallbutton {
+    border-width:1px; 
+    border-color:silver; 
+    padding:3px; 
+    right:5px; 
+    width:80px; 
+    margin-top:3px;
+    background-color:#193067; 
+    color:white;
+}
+
+.homeButton {
+    border-width:1px; 
+    border-color:silver; 
+    padding:3px; 
+    right:5px; 
+    width:80px; 
+    margin-top:3px;
+    background-color:azure; 
+    color:black;
+    position:absolute;
+}
+
+
+.dialogButton {
+   width:100px;
+   padding:5px;
+   height:30px; 
+   border-width:1px; 
+   border-color:silver; 
+   background-color:#193067; 
+   color:white;
+}
+
+.okButton {
+   width:100px;
+   padding:5px;
+   height:30px; 
+   border-width:1px; 
+   border-color:silver; 
+   background-color:orange; 
+   color:white;
+}
+
+.cancelButton {
+   width:100px;
+   padding:5px;
+   height:30px; 
+   border-width:1px; 
+   border-color:silver; 
+   background-color:green; 
+   color:white;
+}
+
+
+.pageTitle {
+    background-color:#193067; 
+    display:block;
+    border-style:solid;
+    border-width:1px;
+    border-color:silver;
+    color:white;
+    font-weight:bold;
+    padding:5px;
+    font-size:12pt;
+}
+
+.pageText {
+     font-size:10pt;
+}
+
+.button {
+   width:200px;
+   padding-left:20px;
+   padding-right:20px;
+   height:40px; 
+   border-width:1px; 
+   border-color:silver; 
+   background-color:#193067; 
+   color:white;
+}
+
 #stage.theme{
     padding:3px;
   }
+
 
 #stage.theme > h1{
     color:#eee;
@@ -20,6 +135,7 @@ body {
     padding:0;
   }
 
+
 #stage.theme > h2{
     clear:both;
     margin:10 0;
@@ -27,8 +143,9 @@ body {
     text-align:center;
   }
 
+
 #stage.theme a.btn{
-  	border: 2px solid #222;
+      border: 2px solid #222;
   	-webkit-border-radius: 9px;
   	border-radius: 9px;
   	text-align:center;
@@ -42,8 +159,8 @@ body {
   	margin:12px;
   }
 
+
 #stage.theme a.btn.enc{
   	background:#555;
   	color:#eee;
   }
-
