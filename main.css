@@ -23,6 +23,7 @@ body {
     position:absolute;
     width:100%;
     background-color:white; 
+    vertical-align:top;
     text-align:center; 
     padding-top:0px;
     color:black;
@@ -58,8 +59,8 @@ body {
     right:5px; 
     width:80px; 
     margin-top:3px;
-    background-color:azure; 
-    color:black;
+    background-color:#193067; 
+    color:white;
     position:absolute;
 }
 
@@ -96,7 +97,7 @@ body {
 
 
 .pageTitle {
-    background-color:#193067; 
+    background-color:#597bc3; 
     display:block;
     border-style:solid;
     border-width:1px;
@@ -146,7 +147,7 @@ body {
 
 #stage.theme a.btn{
       border: 2px solid #222;
-  	-webkit-border-radius: 9px;
+      -webkit-border-radius: 9px;
   	border-radius: 9px;
   	text-align:center;
   	display:block;
@@ -164,3 +165,12 @@ body {
   	background:#555;
   	color:#eee;
   }
+
+
+.ui-controlgroup-controls {
+    width:100% !important;
+}
+
+.ui-select {
+    width:33% !important;
+} 
