@@ -80,7 +80,7 @@ body {
    height:30px; 
    border-width:1px; 
    border-color:silver; 
-   background-color:orange; 
+   background-color:darkgreen; 
    color:white;
 }
 
@@ -90,7 +90,7 @@ body {
    height:30px; 
    border-width:1px; 
    border-color:silver; 
-   background-color:green; 
+   background-color:darkgoldenrod; 
    color:white;
 }
 
