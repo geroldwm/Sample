@@ -1,7 +1,46 @@
+.optionButton {
+     border:1px solid #152562;
+     height:62px;
+     width:80px;
+     margin:0px;
+     padding:0px;
+     text-align:center;
+     vertical-align:bottom;
+     font-weight:bold;
+     color:white;
+     background-color:transparent;
+     font-size:12px;
+     cursor: pointer;
+}
+
+
+.newScriptButton 
+{
+    /* border:1px solid #152562; */
+     height:62px;
+     width:80px;
+     margin:0px;
+     padding:0px;
+     text-align:center;
+     vertical-align:bottom;
+     font-weight:bold;
+     color:white;
+     background-color:transparent;
+     font-size:8pt;
+     
+    background-image: url(images/add.png); /* 16px x 16px */
+    background-color: transparent; 
+    background-repeat: no-repeat;  
+    background-position: 0px 0px;  
+    
+    border: none;           
+    
+    cursor: pointer;
+    padding-left: 2px;     
+}
+
+
 body {
-    /*
-    background:#336 none repeat scroll 0 0;
-        */
     color:white;
     font-family:Helvetica;
     margin:0;
@@ -9,14 +48,32 @@ body {
   }
 
 
+.eRxBlue
+{
+    font-family:Calibri;
+    font-size:24pt;
+    font-weight:normal;
+    color:#0268B2;
+}
+
+.eRxGreen
+{
+    font-family:Calibri;
+    font-size:15pt;
+    font-weight:normal;
+    color:#4FA34D;
+}
+
+
+
 .headerArea {
-    background-color:azure; 
+    background-color:white; 
     padding-top:5px;
     padding-left:5px;
-     height:36px;
-     border-bottom-width:1px; 
-     border-bottom-color:silver; 
-     border-bottom-style:solid;
+    height:36px;
+    border-bottom-width:1px; 
+    border-bottom-color:silver; 
+    border-bottom-style:solid;
 }
 
 .contentArea {
@@ -30,6 +87,20 @@ body {
     font-size:14pt;
 }
 
+.footer {
+    position: fixed;
+    background-color:#193067; 
+    border-top: 1px solid silver;
+    color:white;
+    height:60px;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+
 .accountButton {
     border-width:1px; 
     border-color:silver; 
@@ -39,6 +110,7 @@ body {
     margin-top:3px;
     background-color:#193067; 
     color:white;
+    cursor: pointer;
 }
 
 .smallbutton {
@@ -50,6 +122,7 @@ body {
     margin-top:3px;
     background-color:#193067; 
     color:white;
+    cursor: pointer;
 }
 
 .homeButton {
@@ -62,6 +135,7 @@ body {
     background-color:#193067; 
     color:white;
     position:absolute;
+    cursor: pointer;
 }
 
 
@@ -73,16 +147,19 @@ body {
    border-color:silver; 
    background-color:#193067; 
    color:white;
+   cursor: pointer;
 }
 
 .okButton {
-   width:100px;
+   width:110px;
    padding:5px;
    height:30px; 
    border-width:1px; 
    border-color:silver; 
    background-color:darkgreen; 
+   font-weight:bold;
    color:white;
+   cursor: pointer;
 }
 
 .cancelButton {
@@ -93,6 +170,7 @@ body {
    border-color:silver; 
    background-color:darkgoldenrod; 
    color:white;
+   cursor: pointer;
 }
 
 
@@ -109,7 +187,7 @@ body {
 }
 
 .pageText {
-     font-size:10pt;
+     font-size:14pt;
 }
 
 .button {
@@ -120,6 +198,7 @@ body {
    border-width:1px; 
    border-color:silver; 
    background-color:#193067; 
+   font-weight:bold;
    color:white;
 }
 
