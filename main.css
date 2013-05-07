@@ -1,3 +1,57 @@
+/*
+    <html>
+	<head>
+		<style>
+		html, body {
+			padding: 0;
+			margin: 0;
+		 	overflow: hidden;
+		}
+		#container {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: -30px;
+			bottom: 0;	
+			padding-right: 15px;
+			overflow-y: scroll;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<!-- lines, lines, lines -->
+		</div>
+	</body>
+</html>
+
+    */
+
+
+/* 
+    #feedback { font-size: 20px; } 
+#selectable .ui-selecting { background: #152562; }
+*/
+#selectable { list-style-type:none; margin: 0; padding: 0; width: 60%; background-color:white; }
+#selectable li { margin: 5px; padding: 8px; font-size: 14px; height: 14px; 
+                 color:0268B2;}
+#selectable .ui-selected { background: #152562; color: white; }
+  
+
+
+.body { 
+    /* Overflow:auto;  */
+     margin:0;
+     padding:0 0 0 0;
+    background-color:white;
+    color:black;
+    font-family:Helvetica;
+    /* border-top:1px solid #393939; */
+  }
+
+
+
+
 .optionButton {
      border:1px solid #152562;
      height:62px;
@@ -14,8 +68,7 @@
 }
 
 
-.newScriptButton 
-{
+.newScriptButton {
     /* border:1px solid #152562; */
      height:62px;
      width:80px;
@@ -40,12 +93,6 @@
 }
 
 
-body {
-    color:white;
-    font-family:Helvetica;
-    margin:0;
-    border-top:1px solid #393939;
-  }
 
 
 .eRxBlue
@@ -56,8 +103,7 @@ body {
     color:#0268B2;
 }
 
-.eRxGreen
-{
+.eRxGreen {
     font-family:Calibri;
     font-size:15pt;
     font-weight:normal;
@@ -66,21 +112,32 @@ body {
 
 
 
-.headerArea {
+.header {
+    width:100%;
+   position:fixed;
+   top:0px;
+   height:35px;
     background-color:white; 
     padding-top:5px;
     padding-left:5px;
-    height:36px;
-    border-bottom-width:1px; 
-    border-bottom-color:silver; 
-    border-bottom-style:solid;
+    border-bottom:1px  solid silver;
+    color:black;
+    /* z-index: 1; */
 }
+
+
+.content {
+    width: 100%;
+    position: fixed;
+    top: 44px;
+    
+}
+
 
 .contentArea {
     position:absolute;
     width:100%;
     background-color:white; 
-    vertical-align:top;
     text-align:center; 
     padding-top:0px;
     color:black;
@@ -184,6 +241,8 @@ body {
     font-weight:bold;
     padding:5px;
     font-size:12pt;
+    top:0;
+    vertical-align:top;
 }
 
 .pageText {
@@ -202,27 +261,6 @@ body {
    color:white;
 }
 
-#stage.theme{
-    padding:3px;
-  }
-
-
-#stage.theme > h1{
-    color:#eee;
-    font-size:1.6em;
-    text-align:center;
-    margin-top:15px;
-    padding:0;
-  }
-
-
-#stage.theme > h2{
-    clear:both;
-    margin:10 0;
-    font-size:1em;
-    text-align:center;
-  }
-
 
 #stage.theme a.btn{
       border: 2px solid #222;
@@ -239,13 +277,7 @@ body {
   	margin:12px;
   }
 
-
-#stage.theme a.btn.enc{
-  	background:#555;
-  	color:#eee;
-  }
-
-
+/*
 .ui-controlgroup-controls {
     width:100% !important;
 }
@@ -253,3 +285,5 @@ body {
 .ui-select {
     width:33% !important;
 } 
+
+    */
