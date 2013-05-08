@@ -67,6 +67,7 @@
 
     position:absolute;
     background-image: url("images/TWC-bg.jpg"); 
+    background-image: url("images/TWC-bg.jpg"); 
     opacity: 0.4; 
     filter:alpha(opacity=40); /* For IE8 and earlier */
 
