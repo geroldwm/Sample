@@ -62,7 +62,6 @@
 
 
       <div class="backgroundImage">
-          some
       </div>
 
       <div class="content">
@@ -233,12 +232,31 @@
                  <b>Ascot Vale Pharmacy</b><br /><br />
                  67-69 Union Rd<br />
                  ASCOT VALE VIC 3032 <br />
+               
                  <br />
                  Pickup: 8 May 2013 2:30pm<br />
                  <br />
               </span>
-          
-              <input type="button" id="completedOk" class="okButton" value="Home" />
+              
+              <div style="vertical-align: top;">
+                        <iframe id="pharmacyMap" style="margin:0;" width="350" height="270" " scrolling="no" marginheight="0" marginwidth="0" style="color: black; text-align: right;" 
+                         src="">                                                    
+                        
+                        </iframe>
+<!--
+    src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed">                                                    
+
+    src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982&amp;output=embed">
+                        <br />
+                        <small><a href="http://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982">
+                        View Larger Map</a></small>
+-->
+               </div>
+
+              <br />
+              Add to Calender<br />
+              Send Email<br />
+              Share
       
          </div>
 
@@ -361,162 +379,221 @@
 
         // -----------------------------------------
 
+        function initPharmacyMap() {
+
+
+            // $('#pharmacyMap',window.parent.document).attr('src', $('#pharmacyMap',window.parent.document).attr('src'));
+            
+            
+            var currSrc = $("#pharmacyMap").attr("src");
+            currSrc = 'http://www.google.com.au';
+
+            // $('#pharmacyMap',window.parent.document).attr('src', currSrc);
+            $('#pharmacyMap').attr('src', currSrc);
+
+            // alert($("#pharmacyMap").attr("src"));
+
+            // $("#pharmacyMap").attr("src", currSrc);
+
+            var iFrame = $('#pharmacyMap');
+            // iFrame.load(currSrc);
+
+            // alert('1');
+/*
+            $('#pharmacyMap').attr('src', '');
+            var lcMap
+            lcMap = 'http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed';
+            lcMap = "http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed";
+            // $('#pharmacyMap').attr('src', lcMap);
+            // $('#pharmacyMap').attr('src', 'http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed');
+            */
+            /*
+            $(function(){
+                $('#trns').attr('transform', 'rotate(60,50,50)');
+            });
+            */
+
+            // 'http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed
+
+
+        }
+
+
+        function setTheme() {
+
+            $('#footer').css('background-color', 'red');
+            $('#footer').css('color', 'yellow');
+
+            alert('done');
+        }
+
+
         function pageInit() {
             hide_all_containers(1);
 
-            ShowDrugs();
+            // hide_all_containers();
+            // show_container("pageCompleted");
+            // show_container("pageConfirm");
+
+            setTheme();
+
+            // ShowDrugs();
             
             // show_container("pagePharmacy");
             // show_container("pageConfirm");
-        }
-
-        function hide_container(id) {
-            $("#" + id).fadeTo(100, 0);
-            $("#" + id).hide();
-
-            // $('#pageDrug').css('visibility', 'visible');
-        }
-
-        function show_container(id) {
-            $("#" + id).fadeTo(200, 1);
             
         }
 
-        function hideElement(id) {
-            $('#' + id).css('visibility', 'hidden');
-        }
+            function hide_container(id) {
+                $("#" + id).fadeTo(100, 0);
+                $("#" + id).hide();
 
-        function showElement(id) {
-            $('#' + id).css('visibility', 'visible');
-        }
-
-
-        function hide_all_containers(init) {
-
-            if (init != 1) {
-                hide_container("pageHome");
+                // $('#pageDrug').css('visibility', 'visible');
             }
+
+            function show_container(id) {
+                $("#" + id).fadeTo(200, 1);
             
-            hide_container("pageLogin");
-            hide_container("pageDrug");
-            hide_container("pagePharmacy");
-            hide_container("pageConfirm");
-            hide_container("pageCompleted");
-            hide_container("pageSettings");
+            }
 
-        }
+            function hideElement(id) {
+                $('#' + id).css('visibility', 'hidden');
+            }
 
-        <!-- ------------------------------------------------------ -->
-
-        
-        $("#logo").click(function () {
-            homePage();    
-        });
-        
-
-        <!-- ------------------------------------------------------ -->
-
-        $("#signIn").click(function () {
-            hide_all_containers();
-
-            show_container("pageLogin");
-
-            // hideElement("signIn");
-        });
-
-        $("#loginCancel").click(function () {
-            // alert('Cancel');
-            hide_all_containers();
-            show_container("pageHome");
-            ShowElement("signIn");
-        });
-
-        $("#loginOk").click(function () {
-            // alert('ok');
-            hide_all_containers();
-
-            // show_container("pageHome");
-            //ShowElement("signOut");
-
-            show_container("pageCompleted");
-
-        });
+            function showElement(id) {
+                $('#' + id).css('visibility', 'visible');
+            }
 
 
-        function clearScript() {
+            function hide_all_containers(init) {
 
-            $("#InfoSCID").text("");
-            $("#InfoScriptId").text("");
-        }
-        
-        
-        $("#selDrugHome").click(function () {
-            homePage();
-        });
-
-        function homePage() {
-            hide_all_containers();
-            clearScript();
-
-            hideElement("selectDrug");
-            showElement("scanCode");
-
-            show_container("pageHome");
-        }
-
-
-        <!-- ----------------------------------------  -->
-
-        $("#selectDrug").click(function () {
-            ShowDrugs();
-        });
-
-        $("#selDrugHome").click(function () {
-            homePage();
-        });
-
-        $("#selDrugOk").click(function () {
-            hide_all_containers();
-            show_container("pagePharmacy");
-        });
-        
-        $("#selDrugCancel").click(function () {
-            homePage();
-        });
-
-        function ShowDrugs() {
-            hide_all_containers();
-            show_container("pageDrug");
-        }
-
-
-
-        $("#selPharmacyOk").click(function () {
-            hide_all_containers();
-            show_container("pageConfirm");
-        });
-
-        $("#selPharmacyCancel").click(function () {
-            hide_all_containers();
-            show_container("pageDrug");
-        });
-
-        $("#confirmOk").click(function () {
-            hide_all_containers();
-            show_container("pageLogin");
-            // show_container("pageCompleted");
-        });
-        
-        $("#confirmCancel").click(function () {
-            hide_all_containers();
-            show_container("pagePharmacy");
-        });
-
-
-        $("#completedOk").click(function () {
-            homePage();
+                if (init != 1) {
+                    hide_container("pageHome");
+                }
             
-        });
+                hide_container("pageLogin");
+                hide_container("pageDrug");
+                hide_container("pagePharmacy");
+                hide_container("pageConfirm");
+                hide_container("pageCompleted");
+                hide_container("pageSettings");
+
+            }
+
+            <!-- ------------------------------------------------------ -->
+
+        
+            $("#logo").click(function () {
+                homePage();    
+            });
+        
+
+            <!-- ------------------------------------------------------ -->
+
+            $("#signIn").click(function () {
+                hide_all_containers();
+
+                show_container("pageLogin");
+
+                // hideElement("signIn");
+            });
+
+            $("#loginCancel").click(function () {
+                // alert('Cancel');
+                hide_all_containers();
+                show_container("pageHome");
+                ShowElement("signIn");
+            });
+
+            $("#loginOk").click(function () {
+                // alert('ok');
+                hide_all_containers();
+
+                // show_container("pageHome");
+                //ShowElement("signOut");
+
+                show_container("pageCompleted");
+
+            });
+
+
+            function clearScript() {
+
+                $("#InfoSCID").text("");
+                $("#InfoScriptId").text("");
+            }
+        
+        
+            $("#selDrugHome").click(function () {
+                homePage();
+            });
+
+            function homePage() {
+                hide_all_containers();
+                clearScript();
+
+                hideElement("selectDrug");
+                showElement("scanCode");
+
+                show_container("pageHome");
+            }
+
+
+            <!-- ----------------------------------------  -->
+
+            $("#selectDrug").click(function () {
+                ShowDrugs();
+            });
+
+            $("#selDrugHome").click(function () {
+                homePage();
+            });
+
+            $("#selDrugOk").click(function () {
+                hide_all_containers();
+                show_container("pagePharmacy");
+            });
+        
+            $("#selDrugCancel").click(function () {
+                homePage();
+            });
+
+            function ShowDrugs() {
+                hide_all_containers();
+                show_container("pageDrug");
+            }
+
+
+
+            $("#selPharmacyOk").click(function () {
+                hide_all_containers();
+                show_container("pageConfirm");
+            });
+
+            $("#selPharmacyCancel").click(function () {
+                hide_all_containers();
+                show_container("pageDrug");
+            });
+
+            $("#confirmOk").click(function () {
+                hide_all_containers();
+                
+                initPharmacyMap();
+                show_container("pageCompleted");
+                // show_container("pageLogin");
+                
+            });
+        
+            $("#confirmCancel").click(function () {
+                hide_all_containers();
+                show_container("pagePharmacy");
+            });
+
+
+            $("#completedOk").click(function () {
+                homePage();
+            
+            });
 
         
         
