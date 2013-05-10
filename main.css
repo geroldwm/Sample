@@ -61,7 +61,7 @@
     top: 40px;
     left: 0;
     width: 100%;
-    height: 85%;
+    height: 80%;
     z-index:-1;
     text-align:center;
 
@@ -76,9 +76,6 @@
     background-size:95%;
     /* background-image: url("images/priceline.jpg"); */
 }
-
-
-
 
 
 .optionButton {
@@ -198,6 +195,7 @@
     cursor: pointer;
 }
 
+
 .smallbutton {
     border-width:1px; 
     border-color:silver; 
@@ -273,11 +271,16 @@
     vertical-align:top;
 }
 
-.pageText {
+.pageTitleText {
      font-size:14pt;
 }
 
-.button {
+.pageText {
+     font-size:12pt;
+}
+
+
+.actionButton {
    width:200px;
    padding-left:20px;
    padding-right:20px;
@@ -287,6 +290,7 @@
    background-color:#193067; 
    font-weight:bold;
    color:white;
+   cursor: pointer;
 }
 
 
