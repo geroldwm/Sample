@@ -56,12 +56,15 @@
             <span class="eRxGreen" style="">></span>
             <span class="eRxBlue" style="font-style:italic; font-weight:bold;">EXPRESS</span>
             -->
-            <button id="signIn" class="accountButton" style="position:absolute;">Sign In</button>
+            <button id="signIn" class="accountButton" style="position:absolute; margin-right:4px;">Sign In</button>
             <button id="signOut" class="accountButton" style="position:absolute; visibility:hidden;">Sign Out</button>
       </div>
 
-
-      <div id="backgroundImage" class="backgroundImage">
+      <div id="banner" class="banner">
+          <img id="bannerImage" src="images/priceline-logo.jpg" /> 
+      </div>
+      
+      <div id="background" class="backgroundImage">
       </div>
 
       <div id="content" class="content">
@@ -70,17 +73,14 @@
          <!-- ------------------------------------------------- -->
       
            <div class="contentArea" id="pageHome">
-
+               <!--
                <div id="homeTopAd">
                    <img id="homeTopImage" src="images/priceline-logo.jpg" style=""/> 
                    <br />
                </div>
-
+               -->
              <span class="pageTitleText" style="font-size:18pt;">Welcome to eRx eXpress
                  <br />
-
-                 set background color !!!, e.g. Nova
-
              </span>
 
              
@@ -124,10 +124,13 @@
              <span class="pageTitle">Login</span>
 
              <div style="height:30px;"></div>
-             <span class="pageText" style="width:120px;">User Name </span><input type="text" id="loginUsername" value="paul.naismith" style="width:150px;"  />
+             <span class="pageText">Username </span>
+             <br />
+             <input type="text" id="loginUsername" value="paul.naismith" style="width:200px;"  />
              <br />
              <br />
-             <span class="pageText">Password&nbsp;</span> <input type="password" id="loginPassword" value="sdfhsdfsdhfk" style="width:150px;" />
+             <span class="pageText">Password</span> <br />
+             <input type="password" id="loginPassword" value="sdfhsdfsdhfk" style="width:200px;" />
               <br />
               <br />
               <input type="button" id="loginOk" class="okButton" value="Ok" />
@@ -317,9 +320,6 @@
 
         var themeSettings = {};
 
-
-
-
         //ScannedSCID
         $("#scanCode").click(function (event) {
             ScanCode();
@@ -443,6 +443,18 @@
 
 
         
+        function setOpacity(id, value)
+        {
+            
+            return;
+
+            $('#'+id).css('opacity', 'value/10');
+            $('#'+id).css('filter', alpha(opacity=value));
+
+            // opacity: value/10;   // 0.5
+            // filter:alpha(opacity=value); /* For IE8 and earlier */
+        }
+
 
         function setTheme(id) {
 
@@ -455,28 +467,20 @@
                     {
                         $('#homeTopAd').css('visibility', "visible");
                         // $('#homeTopImage').attr('src', 'url(images/priceline-logo.jpg)');
-
-                        $('#footer').css('background-color', 'white');
-                        $('#footer').css('color', 'black');
-
-                        $('#backgroundImage').css('background-image', 'url(images/priceline-logo.jpg)');
-                        $('#backgroundImage').css('background-position', 'bottom');
-                        //$('#backgroundImage').css('padding-top', '100%');
+                        $('#banner').attr('src', 'url(images/priceline-logo.jpg)');
+                        $('#background').css('background-image', 'url(images/priceline-logo.jpg)');
+                        $('#background').css('background-position', 'bottom');
+                        //$('#background').css('padding-top', '100%');
+                        setOpacity('background', 30);
                         
-                        $('.accountButton').css('background-color', 'white');
-                        $('.accountButton').css('color', 'black');
-
                         $('.actionButton').css('background-color', 'white');
-                        $('.actionButton').css('color', 'black');
+                        $('.actionButton').css('color', 'red');
 
                         $('.okButton').css('background-color', 'white');
                         $('.okButton').css('color', 'black');
 
                         $('.cancelButton').css('background-color', 'white');
-                        $('.cancelButton').css('color', 'black');
-
-                        $('.optionButton').css('border-color', 'silver');
-                        $('.optionButton').css('color', 'black');
+                        $('.cancelButton').css('color', 'red');
 
                         break;
                     }
@@ -486,15 +490,15 @@
                     {
                         $('#homeTopAd').css('visibility', "hidden");
 
-                        $('#footer').css('background-color', '#D81A62');
-                        $('#footer').css('color', 'white');
-
-                        $('#backgroundImage').css('background-image', 'url(images/nova.jpg)');
-                        $('#backgroundImage').css('background-position', 'bottom');
-                        //$('#backgroundImage').css('padding-top', '100%');
+                        // $('#background').css('background-image', 'url(images/nova_logo.png)');
+                        $('#background').css('background-image', 'url()');
+                        $('#background').css('background-position', 'bottom');
+                        // $('#background').css('background-color', '#D81A62');
+                        // $('#background').css('color', 'white');
+                        setOpacity('backgroundImage', 90);
                         
-                        $('.accountButton').css('background-color', '#D81A62');
-                        $('.accountButton').css('color', 'white');
+                        //$('#background').css('padding-top', '100%');
+                   
 
                         $('.actionButton').css('background-color', '#D81A62');
                         $('.actionButton').css('color', 'white');
@@ -505,9 +509,6 @@
                         $('.cancelButton').css('background-color', '#D81A62');
                         $('.cancelButton').css('color', 'white');
 
-                        $('.optionButton').css('border-color', 'white');
-                        $('.optionButton').css('color', 'white');
-
                         break;
                     }
 
@@ -515,15 +516,10 @@
                     {
                         $('#homeTopAd').css('visibility', "hidden");
 
-                        $('#footer').css('background-color', 'white');
-                        $('#footer').css('color', '#8C93C7');
-
-                        $('#backgroundImage').css('background-image', 'url(images/TWC.jpg)');
-                        $('#backgroundImage').css('background-position', 'bottom');
-                        // $('#backgroundImage').css('padding-top', '100%');
-
-                        $('.accountButton').css('background-color', 'white'); 
-                        $('.accountButton').css('color', '#8C93C7');
+                        $('#background').css('background-image', 'url(images/TWC.jpg)');
+                        $('#background').css('background-position', 'bottom');
+                        // $('#background').css('padding-top', '100%');
+                        setOpacity('background', 30);
 
                         $('.actionButton').css('background-color', 'white');
                         $('.actionButton').css('color', '#8C93C7');
@@ -533,11 +529,6 @@
 
                         $('.cancelButton').css('background-color', 'white');
                         $('.cancelButton').css('color', '#8C93C7');
-
-                        $('.optionButton').css('border-color', '#8C93C7');
-                        $('.optionButton').css('color', '#8C93C7');
-
-                        
 
                         break;
                     }
@@ -560,6 +551,7 @@
             // show_container("pageConfirm");
 
             setTheme(pid_priceline);
+            // setTheme(pid_nova);
 
             // ShowDrugs();
             
