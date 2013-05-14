@@ -47,6 +47,40 @@
 
   <body onload="pageInit();" class="body">
 
+      <!-- ------------------------------------------------- -->
+      <!-- Area used to hide inactive screen elements -->
+      <!-- ------------------------------------------------- -->
+      <div class="maskArea" id="pageMask">
+          some text
+      </div>
+      
+
+      <!-- ------------------------------------------------- -->
+      <!-- Login page -->
+      <!-- ------------------------------------------------- -->
+      <div class="popUpPage" id="pageLogin"> 
+        <div class="dialogWindow" style="width:350px;">
+            <!-- -display: inline-block;   alternative to centre div -->
+                 
+            <span class="pageTitle">Sign In</span>
+            
+            <span class="pageText">Username </span>
+            <input type="text" id="loginUsername" value="paul.naismith" style="width:200px; position:relative; left:10px;"  />
+            <br /><br />
+                 
+            <span class="pageText">Password</span> 
+            <input type="password" id="loginPassword" value="sdfhsdfsdhfk" style="width:200px;position:relative; left:10px;"" />
+            <br />
+            <br />
+            <input type="button" id="loginOk" class="dialogButton" value="Ok" />
+            <input type="button" id="loginCancel" class="dialogButton" value="Cancel" />
+            <br /><br />
+        </div>
+      </div>
+
+
+      <!-- ------------------------------------------------- -->
+      <!-- ------------------------------------------------- -->
       <div id="header" class="header">
             <!-- <img id="logo" src="https://portalvhdsh8lgrj68ld12q.blob.core.windows.net/androidimages/eRxExpress.jpg"/>  -->
             <img alt="" id="logo" src="images/eRxExpress.jpg" style="height:30px;cursor: pointer;"/>
@@ -60,9 +94,6 @@
             <button id="signOut" class="accountButton" style="position:absolute; visibility:hidden;">Sign Out</button>
       </div>
 
-      <div id="banner" class="banner">
-          <img id="bannerImage" src="images/priceline-logo.jpg" /> 
-      </div>
       
       <div id="background" class="backgroundImage">
       </div>
@@ -73,12 +104,12 @@
          <!-- ------------------------------------------------- -->
       
            <div class="contentArea" id="pageHome">
-               <!--
+               
                <div id="homeTopAd">
                    <img id="homeTopImage" src="images/priceline-logo.jpg" style=""/> 
                    <br />
                </div>
-               -->
+               
              <span class="pageTitleText" style="font-size:18pt;">Welcome to eRx eXpress
                  <br />
              </span>
@@ -119,30 +150,10 @@
 
          <!-- ------------------------------------------------- -->
          <!-- ------------------------------------------------- -->
-      
-         <div class="contentArea" id="pageLogin">    
-             <span class="pageTitle">Login</span>
-
-             <div style="height:30px;"></div>
-             <span class="pageText">Username </span>
-             <br />
-             <input type="text" id="loginUsername" value="paul.naismith" style="width:200px;"  />
-             <br />
-             <br />
-             <span class="pageText">Password</span> <br />
-             <input type="password" id="loginPassword" value="sdfhsdfsdhfk" style="width:200px;" />
-              <br />
-              <br />
-              <input type="button" id="loginOk" class="okButton" value="Ok" />
-              <input type="button" id="loginCancel" class="cancelButton" value="Cancel" />
-         </div>
-
-
-         <!-- ------------------------------------------------- -->
-         <!-- ------------------------------------------------- -->
 
       
-         <div class="contentArea" id="pageDrug">    
+         <div class="contentArea2" id="pageDrug">    
+
              <span class="pageTitle">Select Drug</span>
 
                 <ol id="selectable" style="text-align:right;">
@@ -544,16 +555,24 @@
 
 
         function pageInit() {
-            hide_all_containers(1);
+            // hide_all_containers(1);
 
-            // hide_all_containers();
+            hide_all_containers();
             // show_container("pageCompleted");
             // show_container("pageConfirm");
 
-            setTheme(pid_priceline);
+            // setTheme(pid_priceline);
             // setTheme(pid_nova);
 
             // ShowDrugs();
+
+            // showElement("pageMask");
+            // showElement("pageLogin");
+            //$("#pageMask").css('visibility', "visible");
+            //$("#pageLogin").css('visibility', "visible");
+            //show_container("pageMask");
+            show_container("pageLogin");
+            
             
             // show_container("pagePharmacy");
             // show_container("pageConfirm");
@@ -629,6 +648,9 @@
 
             $("#signIn").click(function () {
                 hide_all_containers();
+
+                // hide/grayout all other areas
+                // put transparent panel on top
 
                 show_container("pageLogin");
 
