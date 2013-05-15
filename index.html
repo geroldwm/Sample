@@ -47,20 +47,20 @@
 
   <body onload="pageInit();" class="body">
 
-      <!-- ------------------------------------------------- -->
-      <!-- Area used to hide inactive screen elements -->
-      <!-- ------------------------------------------------- -->
-      <div class="maskArea" id="pageMask">
-          some text
-      </div>
-      
 
       <!-- ------------------------------------------------- -->
-      <!-- Login page -->
+      <!-- Area used to hide/mask other screen elements      -->
+      <!-- so they can't be accessed                         -->
       <!-- ------------------------------------------------- -->
-      <div class="popUpPage" id="pageLogin"> 
-        <div class="dialogWindow" style="width:350px;">
-            <!-- -display: inline-block;   alternative to centre div -->
+      <div class="maskArea" id="pageMask">
+      </div>
+      
+      <!-- ------------------------------------------------- -->
+    <!-- Login page -->
+    <!-- ------------------------------------------------- -->
+    <div class="popUpPage" id="pageLogin" style=""> 
+
+        <div class="dialogWindow" id="dialogLogin" style="width:350px;">
                  
             <span class="pageTitle">Sign In</span>
             
@@ -76,7 +76,13 @@
             <input type="button" id="loginCancel" class="dialogButton" value="Cancel" />
             <br /><br />
         </div>
-      </div>
+
+
+
+    </div>
+
+
+     
 
 
       <!-- ------------------------------------------------- -->
@@ -554,10 +560,25 @@
         }
 
 
+        function EnableDialog() {
+            $('#pageMask').css('visibility', 'visible');
+            $('.popUpPage').css('visibility', 'visible');
+        }
+
+        function DisableDialog() {
+            $('#pageMask').css('visibility', 'hidden');
+            $('.popUpPage').css('visibility', 'hidden');
+        }
+
+
         function pageInit() {
             // hide_all_containers(1);
 
-            hide_all_containers();
+
+            EnableDialog();
+            $('#dialogLogin').css('visibility', 'visible');
+
+            // hide_all_containers();
             // show_container("pageCompleted");
             // show_container("pageConfirm");
 
@@ -570,8 +591,8 @@
             // showElement("pageLogin");
             //$("#pageMask").css('visibility', "visible");
             //$("#pageLogin").css('visibility', "visible");
-            //show_container("pageMask");
-            show_container("pageLogin");
+            // show_container("pageMask");
+            // show_container("pageLogin");
             
             
             // show_container("pagePharmacy");
@@ -644,34 +665,35 @@
             });
         
 
-            <!-- ------------------------------------------------------ -->
+        <!-- ------------------------------------------------------ -->
+
+        function closeLogiDialogn() {
+            DisableDialog();
+            hideElement("dialogLogin");
+        }
 
             $("#signIn").click(function () {
-                hide_all_containers();
-
-                // hide/grayout all other areas
-                // put transparent panel on top
-
-                show_container("pageLogin");
-
-                // hideElement("signIn");
+                EnableDialog();
+                $('#dialogLogin').css('visibility', 'visible');
             });
 
             $("#loginCancel").click(function () {
-                // alert('Cancel');
-                hide_all_containers();
-                show_container("pageHome");
-                ShowElement("signIn");
+
+                
+
             });
 
             $("#loginOk").click(function () {
-                // alert('ok');
-                hide_all_containers();
+                
 
+                DisableDialog();
+                hideElement("dialogLogin");
+
+                // validate
+
+                // update button
+                
                 // show_container("pageHome");
-                //ShowElement("signOut");
-
-                show_container("pageCompleted");
 
             });
 
