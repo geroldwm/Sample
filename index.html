@@ -58,7 +58,7 @@
       <!-- ------------------------------------------------- -->
     <!-- Login page -->
     <!-- ------------------------------------------------- -->
-    <div class="popUpPage" id="pageLogin" style=""> 
+    <div class="popUpArea" id="pageLogin" style=""> 
 
         <div class="dialogWindow" id="dialogLogin" style="width:350px;">
                  
@@ -78,11 +78,19 @@
         </div>
 
 
+         <div class="dialogWindow" id="dialogSettings" style="width:350px;">
+                 
+            <span class="pageTitle">Settings</span>
+            
+            <span class="pageText">nice to have!</span>
+            
+            <br />
+            <br />
+            <input type="button" id="settingsOk" class="dialogButton" value="All done" />
+            <br /><br />
+        </div>
 
     </div>
-
-
-     
 
 
       <!-- ------------------------------------------------- -->
@@ -104,18 +112,22 @@
       <div id="background" class="backgroundImage">
       </div>
 
+      <!-- ------------------------------------------------------------------ -->
+      <!-- Content  -->
+      <!-- ------------------------------------------------------------------ -->
+
       <div id="content" class="content">
           
          <!-- ------------------------------------------------- -->
          <!-- ------------------------------------------------- -->
       
            <div class="contentArea" id="pageHome">
-               
-               <div id="homeTopAd">
-                   <img id="homeTopImage" src="images/priceline-logo.jpg" style=""/> 
+               <!--
+               <div id="homeTopAd" style="visibility:hidden;">
+                   <img id="homeTopImage" src="images/priceline-logo.jpg" style="visibility:hidden;" />
                    <br />
                </div>
-               
+               -->
              <span class="pageTitleText" style="font-size:18pt;">Welcome to eRx eXpress
                  <br />
              </span>
@@ -133,32 +145,13 @@
                  <input type="button" id="scanCode" class="actionButton" value="Scan Code"/>
                </div>
 
-                 <input type="button" id="getScriptId" class="actionButton" value="Get Script Detail" style="visibility:hidden;"/>
-
-               <div>
-                    <input type="button" id="selectDrug" class="actionButton" value="Select Drugs" style="visibility:hidden;"/>
-                </div>
-
-                 <div style="margin-top:30px; color:black; text-align:center; font-family:Verdana,Arial; font-size:10pt; ">
-                    <span id="InfoSCID"></span><br />
-                    <span id="InfoScriptId"></span>
-                  </div>
-
-               <!--
-               <div id="Div1">
-                   <img id="Img1" src="images/codral.jpg" style="width:100%;"/>
-                   <br />
-               </div>
-               -->
-
           </div>
 
 
          <!-- ------------------------------------------------- -->
          <!-- ------------------------------------------------- -->
-
       
-         <div class="contentArea2" id="pageDrug">    
+         <div class="contentArea" id="pageDrug">    
 
              <span class="pageTitle">Select Drug</span>
 
@@ -168,14 +161,7 @@
                   <li class="ui-widget-content">Item 3</li>
                   <li class="ui-widget-content">Item 4</li>
                   <li class="ui-widget-content">Item 5</li>
-                  <li class="ui-widget-content">Item 6</li>
-                  <li class="ui-widget-content">Item 7</li>
-
-                  <li class="ui-widget-content">Item 8</li>
-                  <li class="ui-widget-content">Item 9</li>
-                  <li class="ui-widget-content">Item 10</li>
-                    <li class="ui-widget-content">Item 11</li>
-                  <li class="ui-widget-content">Item 12</li>
+                  
                   <li class="ui-widget-content">other</li>
                 </ol>
 
@@ -307,14 +293,12 @@
               <input type="button" id="settingsClose" class="dialogButton" value="Back" />
          </div>
 
-         <!-- ------------------------------------------------- -->
-         <!-- ------------------------------------------------- -->
      </div> 
          
      <div id="footer" class="footer">
         <button id="optNew" class="optionButton">New Script</button>
-        <button id="optHistory" class="optionButton" style="position:relative; left:100px;">History</button>
-        <button id="optSetting" class="optionButton" style="position:absolute; right:0px;">Settings</button>
+        <!-- <button id="optHistory" class="optionButton" style="position:relative; left:100px;">History</button> -->
+        <button id="optSettings" class="optionButton" style="position:absolute; right:0px;">Settings</button>
      </div>
 
       <!-- Use JAVASCRITPT object ??????? -->
@@ -330,12 +314,28 @@
     
     <script type="text/javascript">
 
+        var deviceID = "0283828483";
+
         var themeId = ""
         var pid_priceline = "priceline";
         var pid_twc = "twc";
         var pid_nova = "nova";
+        var pid_eRx = "eRx";
+
+        var scannedSCID = "";
+        var scriptID = "";
+
+        var currentPage = " ";
 
         var themeSettings = {};
+
+
+        function initScriptData() {
+
+            scannedSCID = "";
+            scriptID = "";
+
+        }
 
         //ScannedSCID
         $("#scanCode").click(function (event) {
@@ -351,8 +351,19 @@
         });
 
         function ScanCode() {
-            // show scanned SCID, ID
 
+            initScriptData();
+
+            scannedSCID = "12JVRJ4M5KYJ4DRV71";
+
+            // GetScriptId();
+
+
+            
+            scriptID = "";
+
+            // show scanned SCID, ID
+            /*
             hideElement("InfoSCID");
             hideElement("InfoScriptId");
 
@@ -361,7 +372,9 @@
 
             $("#scanCode").text('Id: ' + $('#ScriptId').val());
             hideElement("scanCode");
-            showElement("selectDrug");
+            */
+
+            showPage("pageDrug");
         }
 
 
@@ -460,114 +473,16 @@
 
 
         
-        function setOpacity(id, value)
-        {
-            
-            return;
-
-            $('#'+id).css('opacity', 'value/10');
-            $('#'+id).css('filter', alpha(opacity=value));
-
-            // opacity: value/10;   // 0.5
-            // filter:alpha(opacity=value); /* For IE8 and earlier */
-        }
-
-
-        function setTheme(id) {
-
-            themeId = id;
-
-            
-            switch (id)
-            {
-                case pid_priceline:
-                    {
-                        $('#homeTopAd').css('visibility', "visible");
-                        // $('#homeTopImage').attr('src', 'url(images/priceline-logo.jpg)');
-                        $('#banner').attr('src', 'url(images/priceline-logo.jpg)');
-                        $('#background').css('background-image', 'url(images/priceline-logo.jpg)');
-                        $('#background').css('background-position', 'bottom');
-                        //$('#background').css('padding-top', '100%');
-                        setOpacity('background', 30);
-                        
-                        $('.actionButton').css('background-color', 'white');
-                        $('.actionButton').css('color', 'red');
-
-                        $('.okButton').css('background-color', 'white');
-                        $('.okButton').css('color', 'black');
-
-                        $('.cancelButton').css('background-color', 'white');
-                        $('.cancelButton').css('color', 'red');
-
-                        break;
-                    }
-
-
-                case pid_nova:
-                    {
-                        $('#homeTopAd').css('visibility', "hidden");
-
-                        // $('#background').css('background-image', 'url(images/nova_logo.png)');
-                        $('#background').css('background-image', 'url()');
-                        $('#background').css('background-position', 'bottom');
-                        // $('#background').css('background-color', '#D81A62');
-                        // $('#background').css('color', 'white');
-                        setOpacity('backgroundImage', 90);
-                        
-                        //$('#background').css('padding-top', '100%');
-                   
-
-                        $('.actionButton').css('background-color', '#D81A62');
-                        $('.actionButton').css('color', 'white');
-
-                        $('.okButton').css('background-color', '#D81A62');
-                        $('.okButton').css('color', 'white');
-
-                        $('.cancelButton').css('background-color', '#D81A62');
-                        $('.cancelButton').css('color', 'white');
-
-                        break;
-                    }
-
-                case pid_twc:
-                    {
-                        $('#homeTopAd').css('visibility', "hidden");
-
-                        $('#background').css('background-image', 'url(images/TWC.jpg)');
-                        $('#background').css('background-position', 'bottom');
-                        // $('#background').css('padding-top', '100%');
-                        setOpacity('background', 30);
-
-                        $('.actionButton').css('background-color', 'white');
-                        $('.actionButton').css('color', '#8C93C7');
-
-                        $('.okButton').css('background-color', 'white');
-                        $('.okButton').css('color', '#8C93C7');
-
-                        $('.cancelButton').css('background-color', 'white');
-                        $('.cancelButton').css('color', '#8C93C7');
-
-                        break;
-                    }
-                default:
-                    break;
-                    // 
-        }
-
-
-            // $('#signIn').css('visibility', 'hidden');
-            // $('#footer').css('visibility', 'hidden');
-        }
-
+        
 
         function EnableDialog() {
             $('#pageMask').css('visibility', 'visible');
-            $('.popUpPage').css('visibility', 'visible');
+            $('.popUpArea').css('visibility', 'visible');
         }
 
         function DisableDialog() {
             $('#pageMask').css('visibility', 'hidden');
-            $('.popUpPage').css('visibility', 'hidden');
+            $('.popUpArea').css('visibility', 'hidden');
         }
 
 
@@ -575,70 +490,46 @@
             // hide_all_containers(1);
 
 
-            EnableDialog();
-            $('#dialogLogin').css('visibility', 'visible');
+            // TO DO: use phone number 
+            deviceID = "2393832049842";
+            currentPage = "test";
 
-            // hide_all_containers();
-            // show_container("pageCompleted");
-            // show_container("pageConfirm");
-
+            setTheme(pid_eRx);
             // setTheme(pid_priceline);
-            // setTheme(pid_nova);
 
-            // ShowDrugs();
-
-            // showElement("pageMask");
-            // showElement("pageLogin");
-            //$("#pageMask").css('visibility', "visible");
-            //$("#pageLogin").css('visibility', "visible");
-            // show_container("pageMask");
-            // show_container("pageLogin");
-            
-            
-            // show_container("pagePharmacy");
-            // show_container("pageConfirm");
-            
+            homePage();
         }
 
-            function hide_container(id) {
+        function hide_container(id) {
+
+            $('#'+id).css('visibility', 'hidden');
+            return;
+
                 $("#" + id).fadeTo(100, 0);
                 $("#" + id).hide();
-
                 // $('#pageDrug').css('visibility', 'visible');
             }
 
             function show_container(id) {
+
+              $("#" + id).css('visibility', 'visible');
+               return;
+
+                $("#" + id).show();
                 $("#" + id).fadeTo(200, 1);
             
             }
 
             function hideElement(id) {
-                $('#' + id).css('visibility', 'hidden');
+                $("#" + id).css('visibility', 'hidden');
             }
 
             function showElement(id) {
-                $('#' + id).css('visibility', 'visible');
+                $("#" + id).css('visibility', 'visible');
             }
 
-
-            function hide_all_containers(init) {
-
-                if (init != 1) {
-                    hide_container("pageHome");
-                }
-            
-                hide_container("pageLogin");
-                hide_container("pageDrug");
-                hide_container("pagePharmacy");
-                hide_container("pageConfirm");
-                hide_container("pageCompleted");
-                hide_container("pageSettings");
-
-            }
-
-            <!-- ------------------------------------------------------ -->
-
-        
+            // --------------------------------
+                
             $("#logo").click(function () {
                 // homePage();    
 
@@ -646,6 +537,10 @@
 
                 switch (themeId)
                 {
+                    case pid_eRx:
+                        setTheme(pid_priceline);
+                        break;
+
                     case pid_priceline:
                         setTheme(pid_twc);
                         break;
@@ -653,74 +548,82 @@
                     case pid_twc:
                         setTheme(pid_nova);
                         break;
-
-                    case pid_nova:
-                        setTheme(pid_priceline);
-                        break;
-
+                    
                     default:
-                        setTheme(pid_priceline);
+                        setTheme(pid_eRx);
                         break;
                 }
             });
         
 
-        <!-- ------------------------------------------------------ -->
+            // --------------------------------------------------
 
-        function closeLogiDialogn() {
-            DisableDialog();
-            hideElement("dialogLogin");
-        }
+            function closeLoginDialog() {
+                DisableDialog();
+                hideElement("dialogLogin");
+            }
 
             $("#signIn").click(function () {
                 EnableDialog();
-                $('#dialogLogin').css('visibility', 'visible');
+                show_container('dialogLogin');
             });
 
+            $("#optSettings").click(function () {
+                EnableDialog();
+                show_container('dialogSettings');
+            });
+
+
             $("#loginCancel").click(function () {
-
-                
-
+                closeLoginDialog();
             });
 
             $("#loginOk").click(function () {
                 
-
-                DisableDialog();
-                hideElement("dialogLogin");
-
                 // validate
 
                 // update button
-                
-                // show_container("pageHome");
 
+                closeLoginDialog();
             });
 
 
-            function clearScript() {
+            $("#sttingsOk").click(function () {
 
-                $("#InfoSCID").text("");
-                $("#InfoScriptId").text("");
-            }
-        
-        
-            $("#selDrugHome").click(function () {
-                homePage();
+                // update app...
+
+                closeLoginDialog();
             });
+
 
             function homePage() {
-                hide_all_containers();
-                clearScript();
 
-                hideElement("selectDrug");
-                showElement("scanCode");
+                showPage("pageHome");
+            }
 
-                show_container("pageHome");
+            function showPage(id) {
+
+                if (currentPage.length > 0)
+                  hide_container(currentPage);
+
+                currentPage = id;
+                show_container(id);
             }
 
 
-            <!-- ----------------------------------------  -->
+            function newScript() {
+
+                initScriptData();
+                homePage();
+            }
+
+            
+
+        // ----------------------------------------------------
+
+            $("#optNew").click(function () {
+                newScript();
+            });
 
             $("#selectDrug").click(function () {
                 ShowDrugs();
@@ -731,8 +634,7 @@
             });
 
             $("#selDrugOk").click(function () {
-                hide_all_containers();
-                show_container("pagePharmacy");
+                showPage("pagePharmacy");
             });
         
             $("#selDrugCancel").click(function () {
@@ -740,37 +642,161 @@
             });
 
             function ShowDrugs() {
-                hide_all_containers();
-                show_container("pageDrug");
+                showPage("pageDrug");
             }
         
             $("#selPharmacyOk").click(function () {
-                hide_all_containers();
-                show_container("pageConfirm");
+                showPage("pageConfirm");
             });
 
             $("#selPharmacyCancel").click(function () {
                 hide_all_containers();
-                show_container("pageDrug");
+                showPage("pageDrug");
             });
 
             $("#confirmOk").click(function () {
-                hide_all_containers();
-                
                 initPharmacyMap();
-                show_container("pageCompleted");
-                // show_container("pageLogin");
-                
+                showPage("pageCompleted");
             });
         
             $("#confirmCancel").click(function () {
-                hide_all_containers();
-                show_container("pagePharmacy");
+                showPage("pagePharmacy");
             });
         
             $("#completedOk").click(function () {
                 homePage();
             });
+
+
+            $("#settingsOk").click(function () {
+                
+            });
+
+            
+
+
+
+
+            function setOpacity(id, value) {
+
+                return;
+
+                $('#' + id).css('opacity', 'value/10');
+                $('#' + id).css('filter', alpha(opacity = value));
+
+                // opacity: value/10;   // 0.5
+                // filter:alpha(opacity=value); /* For IE8 and earlier */
+            }
+
+
+            function setTheme(id) {
+
+                themeId = id;
+
+                switch (id) {
+                    case pid_priceline:
+                        {
+                            $('#homeTopAd').css('visibility', "visible");
+                            // $('#homeTopImage').attr('src', 'url(images/priceline-logo.jpg)');
+                            $('#banner').attr('src', 'url(images/priceline-logo.jpg)');
+                            $('#background').css('background-image', 'url(images/priceline-logo.jpg)');
+                            $('#background').css('background-position', 'bottom');
+                            //$('#background').css('padding-top', '100%');
+                            setOpacity('background', 30);
+
+                            $('.actionButton').css('background-color', 'white');
+                            $('.actionButton').css('color', 'red');
+
+                            $('.okButton').css('background-color', 'white');
+                            $('.okButton').css('color', 'red');
+
+                            $('.cancelButton').css('background-color', 'white');
+                            $('.cancelButton').css('color', 'red');
+
+                            break;
+                        }
+
+
+                    case pid_nova:
+                        {
+                            $('#homeTopAd').css('visibility', "hidden");
+
+                            // $('#background').css('background-image', 'url(images/nova_logo.png)');
+                            $('#background').css('background-image', 'url()');
+                            $('#background').css('background-position', 'bottom');
+                            // $('#background').css('background-color', '#D81A62');
+                            // $('#background').css('color', 'white');
+                            setOpacity('backgroundImage', 90);
+
+                            //$('#background').css('padding-top', '100%');
+
+
+                            $('.actionButton').css('background-color', '#D81A62');
+                            $('.actionButton').css('color', 'white');
+
+                            $('.okButton').css('background-color', '#D81A62');
+                            $('.okButton').css('color', 'white');
+
+                            $('.cancelButton').css('background-color', '#D81A62');
+                            $('.cancelButton').css('color', 'white');
+
+                            break;
+                        }
+
+                    case pid_twc:
+                        {
+                            $('#homeTopAd').css('visibility', "hidden");
+
+                            $('#background').css('background-image', 'url(images/TWC.jpg)');
+                            $('#background').css('background-position', 'bottom');
+                            // $('#background').css('padding-top', '100%');
+                            setOpacity('background', 30);
+
+                            $('.actionButton').css('background-color', 'white');
+                            $('.actionButton').css('color', '#8C93C7');
+
+                            $('.okButton').css('background-color', 'white');
+                            $('.okButton').css('color', '#8C93C7');
+
+                            $('.cancelButton').css('background-color', 'white');
+                            $('.cancelButton').css('color', '#8C93C7');
+
+                            break;
+                        }
+
+                    case pid_eRx:
+                        {
+                            $('#homeTopAd').css('visibility', "visible");
+                            // $('#homeTopImage').attr('src', 'url(images/priceline-logo.jpg)');
+
+                            $('#banner').attr('src', 'url()');
+                            $('#background').css('background-image', 'url()');
+                            $('#background').css('background-position', 'bottom');
+                            //$('#background').css('padding-top', '100%');
+                            setOpacity('background', 30);
+
+                            $('.actionButton').css('background-color', 'white');
+                            $('.actionButton').css('color', 'black');
+
+                            $('.okButton').css('background-color', 'white');
+                            $('.okButton').css('color', 'black');
+
+                            $('.cancelButton').css('background-color', 'white');
+                            $('.cancelButton').css('color', 'black');
+                            break;
+                        }
+
+                    default:
+
+                        break;
+                        // 
+                }
+
+                // $('#signIn').css('visibility', 'hidden');
+                // $('#footer').css('visibility', 'hidden');
+            }
+
+
         
     </script>
 
