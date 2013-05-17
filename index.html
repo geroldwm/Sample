@@ -18,13 +18,8 @@
  
   <script type="text/javascript">
       $(function () {
-          $("#selectDrug").selectable();
+          $("#selectable").selectable();
       });
-
-      $(function () {
-          $("#selectPharmacy").selectable();
-      });
-
   </script>
    
               
@@ -82,8 +77,21 @@
             <br /><br />
         </div>
 
+
+         <div class="dialogWindow" id="dialogSettings" style="width:350px;">
+                 
+            <span class="pageTitle">Settings</span>
+            
+            <span class="pageText">nice to have!</span>
+            
+            <br />
+            <br />
+            <input type="button" id="settingsOk" class="dialogButton" value="All done" />
+            <br /><br />
+        </div>
+
     </div>
- 
+
 
       <!-- ------------------------------------------------- -->
       <!-- ------------------------------------------------- -->
@@ -113,10 +121,14 @@
          <!-- ------------------------------------------------- -->
          <!-- ------------------------------------------------- -->
       
-           <div class="contentArea" id="pageHome" style="top:80px;">
-          
-             <span class="pageTitleText" style="font-size:18pt;">
-                 Welcome to eRx eXpress
+           <div class="contentArea" id="pageHome">
+               <!--
+               <div id="homeTopAd" style="visibility:hidden;">
+                   <img id="homeTopImage" src="images/priceline-logo.jpg" style="visibility:hidden;" />
+                   <br />
+               </div>
+               -->
+             <span class="pageTitleText" style="font-size:18pt;">Welcome to eRx eXpress
                  <br />
              </span>
 
@@ -143,28 +155,16 @@
 
              <span class="pageTitle">Select Drug</span>
 
-             <div style="width:80%; margin: 0 auto;"> 
-                  <span class="pageText" style="width:120px;">
-                     Please select the drugs from your script that you would like to order from a pharmacy.
-                  </span>
-               <br /><br />
-             </div>
-           
-                <ol id="selectDrug" style="text-align:right;">
-                  <li class="ui-widget-content">
-                      <span class="listItemFirstRow">AMOXYCILLIN CAP 250mg</span><br /> 
-                      <span class="listItemSecondRow">20 Capsules, 3 Repeats left</span>
-                          </li>
-                  <li class="ui-widget-content">
-                      <span class="listItemFirstRow">LIPITOR TAB 10 mg</span><br />
-                      <span class="listItemSecondRow">30 Tablets, No Repeat left</span>
-                  </li>
-                   <li class="ui-widget-content">
-                      <span class="listItemFirstRow">INDOCID CAP 25 mg</span><br />
-                      <span class="listItemSecondRow">200 Capsules, 2 Repeats left</span>
-                  </li>
+                <ol id="selectable" style="text-align:right;">
+                  <li class="ui-widget-content"><b>Panadol</b> 20 mg</li>
+                  <li class="ui-widget-content">Item 2</li>
+                  <li class="ui-widget-content">Item 3</li>
+                  <li class="ui-widget-content">Item 4</li>
+                  <li class="ui-widget-content">Item 5</li>
                   
+                  <li class="ui-widget-content">other</li>
                 </ol>
+
          
               <br />
               <input type="button" id="selDrugOk" class="okButton" value="Continue" />
@@ -177,51 +177,35 @@
 
           <div class="contentArea" id="pagePharmacy">    
               <span class="pageTitle">Select Pharmacy</span>
+         
+              <br />
+
+              <div style="background-color:white; width:80%; text-align:left;  border: 1px solid silver; margin-left:10%; padding:1px;">
               
-             <div style="width:80%; margin: 0 auto;"> 
-                  <span class="pageText" style="width:120px;">
-                     Please select the pharmacy where you would like to place your order. 
-                      Select from the list below or search for another pharmacy.
-                     
-                  </span>
-               <br /><br />
-             </div>
-              
-                 <ol id="selectPharmacy" style="text-align:right;">
+                       <div style="background-color:#597bc3;padding-left:5px;">
+                           <span class="pageText" style="font-size:12pt; font-weight:normal; color:white">
+                                Ascot Vale Pharmacy
+                           </span>
+                      </div>
 
-                     <li class="ui-widget-content">
-                      <span class="listItemFirstRow">Amcal Pharmacy</span><br />
-                      <span class="listItemSecondRow">320-380 Epsom Rd, Ascot Value<br />
-                          </span>
-                  </li>
-
-                  <li class="ui-widget-content">
-                      <span class="listItemFirstRow">Ascot Vale Pharmacy</span><br /> 
-                      <span class="listItemSecondRow">189 Union Rd, Ascot Vale<br /> 
-                          </span>
-                  </li>
-                  
-                   <li class="ui-widget-content">
-                      <span class="listItemFirstRow">National Pharmacies</span><br />
-                      <span class="listItemSecondRow">218 Union Rd, Ascot Vale<br />
-                          </span>
-                  </li>
-
-                   <li class="ui-widget-content">
-                      <span class="listItemFirstRow">Quality Pharmacy Group</span><br />
-                      <span class="listItemSecondRow">550 Mt Alexander Rd, Ascot Vale<br />
-                      </span>
-                  </li>
-                     <br />
-                  
-                    <li class="ui-widget-content">
-                      <span class="listItemFirstRow">Other Pharmacy</span><br />
-                      <span class="listItemSecondRow">Search for another pharmacy...<br />
-                          </span>
-                  </li>
-
-                </ol>
-              
+                      <div style="background-color:white; padding-left:5px;">
+                                  <span class="pageText" style="font-size:12pt;">
+                                Priceline Pharmacy
+                           </span>
+                      </div>
+                      <div style="background-color:white; padding-left:5px;">
+                          <span class="pageText" style="font-size:12pt;">
+                                Terry White Pharmacy
+                           </span>
+                      </div>
+                       <div style="background-color:white; padding-left:5px;">
+                           <span class="pageText" style="font-size:12pt;">
+                                Amcal Pharmacy
+                           </span>
+                      </div>
+          
+              </div>
+    
               <br />
          
              <input type="button" id="selPharmacyOk" class="okButton" value="Continue" />
@@ -234,31 +218,23 @@
       
          <div class="contentArea" id="pageConfirm">    
          
-             <span class="pageTitle">Send Request to Pharmacy</span>
+             <span class="pageTitle">Confirm Request</span>
 
-                <div style="width:80%; margin: 0 auto;"> 
-                  <span class="pageText" style="width:120px;">
-                     Please specify a date and time for collecting the drugs from the pharmacy. 
-                     You can also leave a message with special instructions.
-                  </span>
-             </div>
-             <br /><br />
-             
-             <span class="pageTextBold">Your Pickup Date</span> <br />
-             <input type="text" id="pickupDate" value="23 May 2013" style="width:120px;" class="inputControl"/>
+             <div style="height:30px;"></div>
+
+             <span class="pageText" style="width:120px;">Message to Pharmacy</span><br />
+             <textarea class="message" id="mesage" cols="25" rows="4">hand over the drugs please</textarea>
+             <br />
+             <br />
+             <span class="pageText">Pickup Date</span> <br />
+             <input type="text" id="pickupDate" value="8 May 2013" style="width:80px;" />
               <br />
              <br />
-             <span class="pageTextBold">Your Pickup Time</span><br />
-              <input type="text" id="pickupTime" value="2:30pm" style="width:120px;" class="inputControl"/>
-             <br /><br />
-
-             <span class="pageTextBold">Your message to the pharmacy</span><br />
-             <textarea id="pickupNotes" style="width:80%; height:100px;" cols="25" rows="4" class="inputControl">I will collect the drugs for my kids as well.
-             </textarea>
-              <br /><br />
-
+             <span class="pageText">Pickup Time&nbsp;</span><br />
+              <input type="text" id="pickupTime" value="2:30pm" style="width:80px;" />
               <br />
-              <input type="button" id="confirmOk" class="okButton" value="Send Request" />
+              <br />
+              <input type="button" id="confirmOk" class="okButton" value="Submit" />
               <input type="button" id="confirmCancel" class="cancelButton" value="Back" />
 
          </div>
@@ -270,39 +246,39 @@
          
              <span class="pageTitle">Request sent</span>
 
-             <span class="pageText" style="width:120px;">
-                 Your request has been sent to the following pharmacy:<br />
+             <div style="height:30px;"></div>
+
+             <span class="pageText" style="width:120px;">Your request hase been sent to the following pharmacy:<br />
                  <br />
-                 <b>Ascot Vale Pharmacy</b><br />
+                 <b>Ascot Vale Pharmacy</b><br /><br />
                  67-69 Union Rd<br />
                  ASCOT VALE VIC 3032 <br />
                
                  <br />
-                 Requested Pickup Time:<br />
-                  8 May 2013 2:30pm<br />
+                 Pickup: 8 May 2013 2:30pm<br />
                  <br />
               </span>
-
               
               <div style="vertical-align: top;">
                         <iframe id="pharmacyMap" style="margin:0;" width="350" height="270" " scrolling="no" marginheight="0" marginwidth="0" style="color: black; text-align: right;" 
-                         src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed">                                                                                                  
+                         src="">                                                    
+                        
                         </iframe>
 <!--
     src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed">                                                    
-<!--
+
     src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982&amp;output=embed">
                         <br />
                         <small><a href="http://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982">
                         View Larger Map</a></small>
 -->
                </div>
-<!--
+
               <br />
               Add to Calender<br />
               Send Email<br />
               Share
--->      
+      
          </div>
 
          <!-- ------------------------------------------------- -->
@@ -460,7 +436,6 @@
 
         function initPharmacyMap() {
 
-            return;
 
             // $('#pharmacyMap',window.parent.document).attr('src', $('#pharmacyMap',window.parent.document).attr('src'));
             
@@ -523,7 +498,6 @@
             // setTheme(pid_priceline);
 
             homePage();
-            // showPage("pageDrug");
         }
 
         function hide_container(id) {
@@ -747,12 +721,12 @@
                         {
                             $('#homeTopAd').css('visibility', "hidden");
 
-                            $('#background').css('background-image', 'url(images/nova_logo.png)');
-                            // $('#background').css('background-image', 'url()');
+                            // $('#background').css('background-image', 'url(images/nova_logo.png)');
+                            $('#background').css('background-image', 'url()');
                             $('#background').css('background-position', 'bottom');
                             // $('#background').css('background-color', '#D81A62');
                             // $('#background').css('color', 'white');
-                            setOpacity('backgroundImage', 80);
+                            setOpacity('backgroundImage', 90);
 
                             //$('#background').css('padding-top', '100%');
 
@@ -778,14 +752,14 @@
                             // $('#background').css('padding-top', '100%');
                             setOpacity('background', 30);
 
-                            $('.actionButton').css('background-color', '#8C93C7');
-                            $('.actionButton').css('color', 'white');
+                            $('.actionButton').css('background-color', 'white');
+                            $('.actionButton').css('color', '#8C93C7');
 
-                            $('.okButton').css('background-color', '#8C93C7');
-                            $('.okButton').css('color', 'white');
+                            $('.okButton').css('background-color', 'white');
+                            $('.okButton').css('color', '#8C93C7');
 
-                            $('.cancelButton').css('background-color', '#8C93C7');
-                            $('.cancelButton').css('color', 'white');
+                            $('.cancelButton').css('background-color', 'white');
+                            $('.cancelButton').css('color', '#8C93C7');
 
                             break;
                         }
