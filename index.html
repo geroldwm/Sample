@@ -5,17 +5,16 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
     
      <title >eRx Express</title>
+     
      <link rel="stylesheet" href="main.css" type="text/css" />
+     <link rel="stylesheet" href="jquery-ui.css" />
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /> -->
 
       <script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-  
+      <script type="text/javascript" src="jquery-ui.min.js"></script>
+      <script type="text/javascript" src="jquery.ui.touch-punch.js"></script>
+     
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <!--<link rel="stylesheet" href="/resources/demos/style.css" /> -->
- 
   <script type="text/javascript">
       $(function () {
           $("#selectDrug").selectable();
@@ -65,7 +64,7 @@
     <!-- ------------------------------------------------- -->
     <div class="popUpArea" id="pageLogin" style=""> 
 
-        <div class="dialogWindow" id="dialogLogin" style="width:350px;">
+        <div class="dialogWindow" id="dialogLogin">
                  
             <span class="pageTitle">Sign In</span>
             
@@ -97,7 +96,7 @@
             <span class="eRxBlue" style="font-style:italic; font-weight:bold;">EXPRESS</span>
             -->
             <button id="signIn" class="accountButton" style="position:absolute; margin-right:4px;">Sign In</button>
-            <button id="signOut" class="accountButton" style="position:absolute; visibility:hidden;">Sign Out</button>
+            <button id="signOut" class="accountButton" style="position:absolute; margin-right:4px; visibility:hidden;">Sign Out</button>
       </div>
 
       
@@ -242,21 +241,19 @@
                      You can also leave a message with special instructions.
                   </span>
              </div>
-             <br /><br />
+             <br />
              
              <span class="pageTextBold">Your Pickup Date</span> <br />
-             <input type="text" id="pickupDate" value="23 May 2013" style="width:120px;" class="inputControl"/>
-              <br />
+             <input type="text" id="requesDate" value="23 May 2013" class="inputControl"/>
              <br />
              <span class="pageTextBold">Your Pickup Time</span><br />
-              <input type="text" id="pickupTime" value="2:30pm" style="width:120px;" class="inputControl"/>
-             <br /><br />
+              <input type="text" id="requesTime" value="2:30pm" class="inputControl"/>
+             <br />
 
              <span class="pageTextBold">Your message to the pharmacy</span><br />
-             <textarea id="pickupNotes" style="width:80%; height:100px;" cols="25" rows="4" class="inputControl">I will collect the drugs for my kids as well.
+             <textarea id="requestNotes" style="width:80%; height:60px;" cols="25" rows="4" class="inputControl">I will collect the drugs for my kids as well.
              </textarea>
-              <br /><br />
-
+              
               <br />
               <input type="button" id="confirmOk" class="okButton" value="Send Request" />
               <input type="button" id="confirmCancel" class="cancelButton" value="Back" />
@@ -274,11 +271,12 @@
                  Your request has been sent to the following pharmacy:<br />
                  <br />
                  <b>Ascot Vale Pharmacy</b><br />
+                 <!--
                  67-69 Union Rd<br />
                  ASCOT VALE VIC 3032 <br />
-               
+               -->
                  <br />
-                 Requested Pickup Time:<br />
+                 <b>Pickup Time:</b><br />
                   8 May 2013 2:30pm<br />
                  <br />
               </span>
@@ -290,7 +288,7 @@
                         </iframe>
 <!--
     src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed">                                                    
-<!--
+
     src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982&amp;output=embed">
                         <br />
                         <small><a href="http://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982">
@@ -352,7 +350,9 @@
         var currentPage = " ";
 
         var themeSettings = {};
-
+        var signedIn = false;
+        var signInFromRequest = false;
+        
 
         function initScriptData() {
 
@@ -512,9 +512,6 @@
 
 
         function pageInit() {
-            // hide_all_containers(1);
-
-
             // TO DO: use phone number 
             deviceID = "2393832049842";
             currentPage = "test";
@@ -589,28 +586,48 @@
                 hideElement("dialogLogin");
             }
 
-            $("#signIn").click(function () {
+            function doSignIn() {
                 EnableDialog();
                 show_container('dialogLogin');
+            }
+
+            $("#signIn").click(function () {
+                doSignIn();
             });
+
+            $("#signOut").click(function () {
+                signedIn = false;
+                hideElement("signOut");
+                showElement("signIn");
+            });
+
 
             $("#optSettings").click(function () {
                 EnableDialog();
                 show_container('dialogSettings');
             });
 
-
             $("#loginCancel").click(function () {
                 closeLoginDialog();
+                signInFromRequest = false;
             });
 
             $("#loginOk").click(function () {
-                
+
                 // validate
+
+                signedIn = true;
+                hideElement("signIn");
+                showElement("signOut");
 
                 // update button
 
                 closeLoginDialog();
+
+                if (signInFromRequest) {
+                    signInFromRequest = false;
+                    doPageCompleted();
+                }
             });
 
 
@@ -676,13 +693,23 @@
             });
 
             $("#selPharmacyCancel").click(function () {
-                hide_all_containers();
                 showPage("pageDrug");
             });
 
-            $("#confirmOk").click(function () {
+            function doPageCompleted() {
                 initPharmacyMap();
                 showPage("pageCompleted");
+            }
+
+            $("#confirmOk").click(function () {
+
+                if (!signedIn) {
+                    signInFromRequest = true;
+                    doSignIn();
+                }
+                else {
+                    doPageCompleted()
+                }
             });
         
             $("#confirmCancel").click(function () {
