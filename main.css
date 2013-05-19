@@ -235,7 +235,7 @@ body {
 .optionButton {
      border:0px solid #444;
      font-family: Symbols;
-     height:40px;
+     height:inherit;
      width:80px;
      margin:3px;
      padding:3px;

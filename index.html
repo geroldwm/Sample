@@ -93,7 +93,7 @@
             <span class="pageTitle">Sign In</span>
             
             <span class="dialogText">Username </span>
-            <input type="text" id="loginUsername" value="paul.naismith" style="width:160px; position:relative; left:10px; margin-bottom:15px;"  />
+            <input type="text" id="loginUsername" value="peter.jones" style="width:160px; position:relative; left:10px; margin-bottom:15px;"  />
              <br /> 
             <span class="dialogText">Password</span> 
             <input type="password" id="loginPassword" value="sdfhsdfsdhfk" style="width:160px;position:relative; left:10px;  margin-bottom:15px;" />
@@ -104,6 +104,23 @@
 
     </div>
  
+    <!-- ------------------------------------------------- -->
+    <!-- Mesagebox -->
+    <!-- ------------------------------------------------- -->
+    <div class="popUpArea" id="pageMessagebox" style=""> 
+
+        <div class="dialogWindow" id="dialogMessagebox">
+                 
+            <span class="pageTitle">Information</span>
+            
+            <span class="dialogText">Username </span>
+            
+            <input type="button" id="Button1" class="dialogButton" value="Ok" />
+        </div>
+
+    </div>
+ 
+
 
     <!-- ------------------------------------------------- -->
     <!-- Progress page -->
@@ -150,18 +167,8 @@
            <div class="contentArea" id="pageHome" style="top:80px;">
           
              <span class="pageTitleText" style="font-size:16pt;">
-                 Welcome to eRx
-                 <span class="eRxGreen" style="font-size:inherit;">></span>
-                 <span class="eRxBlue" style="font-style:italic; font-size:inherit;">EXPRESS</span>
-                 <!--
-                 <span class="eRxGreen" style="font-size:inherit;">e</span>
-                 <span class="eRxBlue" style="font-size:inherit;">Rx</span>
-                 <span class="eRxGreen" style="font-size:inherit;">></span>
-                 <span class="eRxBlue" style="font-style:italic; font-size:inherit;font-weight:bold;">EXPRESS</span>
-                 -->
-                 <br />
+                 Welcome!
              </span>
-
              
              <div style="width:70%; margin-left:auto; margin-right:auto; padding-top:30px;">
              <!--
@@ -173,7 +180,7 @@
                 </span>
                  -->   
                     <span class="pageText">
-                     Please scan the QR code to select your drugs and send a request to a pharmacy for pick-up.
+                     Please scan the QR code and select the drugs that you would would like to request from a pharmacy.
                  </span>
                  <br /><br />
               </div>
@@ -192,8 +199,11 @@
 
              <span class="pageTitle">Select Drug</span>
 
-             <div style="width:80%; margin:0 auto; margin-bottom:20px;"> 
-                  <span class="pageText" style="width:120px;">
+             <div style="width:90%; margin:0 auto; margin-bottom:20px;"> 
+                  <span class="pageText" style="font-weight:bold; margin-bottom:30px;">
+                     Prescription for Peter Jones <br /><br />
+                  </span>
+                  <span class="pageText">
                      Please select the drugs from your script that you would like to order from a pharmacy.
                   </span>
                <br />
@@ -281,7 +291,7 @@
 
                 <div style="width:80%; margin: 0 auto;"> 
                   <span class="pageText" style="width:120px;">
-                     Please specify a date and time for collecting the drugs from the pharmacy. 
+                     Please specify a date and time for collecting the drugs from the pharmacy.
                   </span>
              </div>
              <br />
@@ -300,7 +310,6 @@
               <br />
               <input type="button" id="requestOk" class="okButton" value="Send Request" />
               <input type="button" id="requestCancel" class="cancelButton" value="Back" />
-
          </div>
 
 
@@ -313,12 +322,10 @@
 
                 <div style="width:95%; margin: 0 auto; margin-bottom:15px; text-align:left;"> 
                   <span class="pageText" style="font-size:9pt;">
-                     This is an UI prototype for a mobile phone application to provide functionality around eRx Express.
-                     Transactions with services are currently only simulated.
+                     This is prototype for a platform-independent mobile phone application to provide functionality around eRx Express.
+                     Transactions with web services are currently only simulated.<br />
                      <br />
-                     <br />
-                     The application was written using HTML5 to provide a platform-independent solution and then
-                     compiled into packages for all mobile phone platforms (Windows, Android, Apple, Blackberry etc.) using Adbobe PhoneGap.
+                     The application was written using HTML5 which is the compiled into packages for all mobile phone platforms (Windows, Android, Apple, Blackberry etc.) using Adobe PhoneGap.
                      <br /><br />
                      For more information please contact Gerold Martens at FRED.
                      </span>
@@ -327,8 +334,10 @@
               
          </div>
 
+         <!-- ------------------------------------------------- -->
+         <!-- ------------------------------------------------- -->
 
-            <div class="contentArea" id="pageSettings">    
+         <div class="contentArea" id="pageSettings">    
          
              <span class="pageTitle">Settings</span>
 
@@ -347,25 +356,55 @@
 
           <div class="contentArea" id="pageCompleted">    
          
-             <span class="pageTitle">Request sent</span>
+             <span class="pageTitle">Confirmation</span>
 
              <span class="pageText" style="width:120px;">
                  Your request has been successfully sent to the following pharmacy:<br />
                  <br />
                  <b>Ascot Vale Pharmacy</b><br />
-                 <!--
                  67-69 Union Rd<br />
                  ASCOT VALE VIC 3032 <br />
-               -->
+               
                  <br />
                  <b>Pickup Time:</b><br />
-                  8 May 2013 2:30pm<br />
+                  23 May 2013 2:30pm<br />
                  <br />
               </span>
 
+
+              <input type="button" id="completedShowMap" class="okButton" value="ShowMap" />
+              <input type="button" id="completedAddCalender" class="okButton" value="Add To Calendar" />
               
-              <div style="vertical-align: top;">
+<!--              
+              <div style="vertical-align: top; margin:2px;">
                         <iframe id="pharmacyMap" style="margin:0;" width="350" height="270" " scrolling="no" marginheight="0" marginwidth="0" style="color: black; text-align: right;" 
+                         src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed">                                                                                                  
+                        </iframe>
+    src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed">                                                    
+
+    src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982&amp;output=embed">
+                        <br />
+                        <small><a href="http://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=5+Little+Bridge+Street,+Bakery+Hill,+Victoria&amp;aq=0&amp;sll=-37.563188,143.861756&amp;sspn=0.00239,0.004823&amp;ie=UTF8&amp;hq=&amp;hnear=5+Little+Bridge+St,+Ballarat+Victoria+3350&amp;z=14&amp;ll=-37.562964,143.860982">
+                        View Larger Map</a></small>
+
+               </div>
+-->
+         </div>
+
+
+         <!-- ------------------------------------------------- -->
+         <!-- ------------------------------------------------- -->
+
+          <div class="contentArea" id="pageMap">    
+         
+             <span class="pageTitle">Pharmacy Location</span>
+
+             <span class="pageText" style=" margin-bottom:20px;">
+                 <b>Ascot Vale Pharmacy</b><br /><br />
+              </span>
+
+              <div style="vertical-align: top; margin:2px;">
+                        <iframe id="pharmacyMap" style="margin:0;color:black;text-align:right; width:95%;" height="270" scrolling="no" 
                          src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=67-69 Union Rd, ASCOT VALE VIC 3032,Victoria&amp;aq=0&amp;&amp;ie=UTF8&amp;hq=&amp;hnear=67-69 Union Rd, ASCOT VALE VIC 3032&amp;z=14&amp;&amp;output=embed">                                                                                                  
                         </iframe>
 <!--
@@ -377,6 +416,8 @@
                         View Larger Map</a></small>
 -->
                </div>
+               
+               <input type="button" id="mapClose" class="okButton" value="Back" />
 <!--
               <br />
               Add to Calender<br />
@@ -385,17 +426,7 @@
 -->      
          </div>
 
-         <!-- ------------------------------------------------- -->
-         <!-- ------------------------------------------------- -->
-      
-          <div class="contentArea" id="pageSettings">    
-              <span class="pageTitle">Settings</span>
-
-              <br />
-              <br />
-              <br />
-              <input type="button" id="settingsClose" class="dialogButton" value="Back" />
-         </div>
+          
 
      </div> 
          
@@ -458,7 +489,8 @@
 
         //ScannedSCID
         $("#scanCode").click(function (event) {
-            ScanCode();
+            // ScanCode();
+            showPage("pageMap");
         });
 
         $("#getScriptId").click(function (event) {
@@ -716,6 +748,20 @@
             }
 
 
+            function processAddToCalendar() {
+                var ok;
+                hideDialog("dialogProgress");
+            }
+
+            function doAddToCalender() {
+
+                showDialog("dialogProgress", "Adding appointment to calender...");
+                setTimeout(function () {
+                    processAddToCalendar();
+                }, 2000);
+            }
+
+
             $("#signIn").click(function () {
                 showDialog("dialogLogin", "");
             });
@@ -742,7 +788,6 @@
                 // update button
                 hideElement("signIn");
                 showElement("signOut");
-
 
                 hideDialog("dialogLogin");
 
@@ -792,9 +837,10 @@
 
 
             $("#optAbout").click(function () {
-                tempPage = currentPage;
-                showPage("pageAbout");
-                
+                if ($('#pageAbout').css('visibility') == "hidden") {
+                    tempPage = currentPage;
+                    showPage("pageAbout");
+                }
             });
 
             $("#aboutClose").click(function () {
@@ -803,8 +849,10 @@
 
 
             $("#optSettings").click(function () {
-                tempPage = currentPage;
-                showPage("pageSettings");
+                if ($('#pageSettings').css('visibility') == "hidden") {
+                    tempPage = currentPage;
+                    showPage("pageSettings");
+                }
             });
 
 
@@ -853,6 +901,21 @@
                 hideDialog("dialogProgress");
                 doPageCompleted()
             }
+
+            $("#completedShowMap").click(function () {
+                showPage("pageMap");
+            });
+
+
+            $("#completedAddCalender").click(function () {
+                doAddToCalender();
+            });
+
+
+            $("#mapClose").click(function () {
+                showPage("pageCompleted");
+            });
+
 
             function doSendRequest() {
 
