@@ -12,8 +12,8 @@
 
       <script type="text/javascript" src="jquery.min.js"></script>
       <script type="text/javascript" src="jquery-ui.min.js"></script>
-      <script type="text/javascript" src="jquery.ui.touch-punch.js"></script>
-     
+      <!-- <script type="text/javascript" src="jquery.ui.touch-punch.js"></script> -->
+        
 
   <script type="text/javascript">
       $(function () {
@@ -23,6 +23,30 @@
       $(function () {
           $("#selectPharmacy").selectable();
       });
+
+
+      $(document).ready(function () {
+          // $("#Options").buttonset();
+          // $('#' + align + 'Text').attr("checked", "checked").button('refresh');
+
+          /*
+          $( "#radio-jquery-ui :input" ).each(function(){
+          $label = $(this).next();<span class="Apple-tab-span" style="white-space:pre"> </span>
+          $("table").append($("<tr/>").attr('id',$(this).attr('id'))
+          .append($("<td/>").addClass('1').html($label.html()))
+          .append($("<td align='center'/>").addClass('2').html( ($(this).attr('checked'))? 'checked' : 'no' ) )
+          .append($("<td/>").addClass('3').html( ($label.hasClass('ui-state-active'))? 'ui-state-active' : 'not active' )));
+          }); 
+          $( "#radio-jquery-ui label" ).click(function(){
+          $( "#radio-jquery-ui label" ).each(function(){
+          $input = $(this).prev();
+          $("tr [id='"+$(this).attr('for')+"'] td.2").html( ($input.attr('checked'))? 'checked' : 'no'  );
+          $("tr[id='"+$(this).attr('for')+"'] td.3").html( ($(this).hasClass('ui-state-active'))? 'ui-state-active' : 'not active' );
+          });
+          });
+          */
+      });
+
 
   </script>
    
@@ -59,7 +83,7 @@
       <div class="maskArea" id="pageMask">
       </div>
       
-      <!-- ------------------------------------------------- -->
+    <!-- ------------------------------------------------- -->
     <!-- Login page -->
     <!-- ------------------------------------------------- -->
     <div class="popUpArea" id="pageLogin" style=""> 
@@ -68,35 +92,47 @@
                  
             <span class="pageTitle">Sign In</span>
             
-            <span class="pageText">Username </span>
-            <input type="text" id="loginUsername" value="paul.naismith" style="width:200px; position:relative; left:10px;"  />
-            <br /><br />
-                 
-            <span class="pageText">Password</span> 
-            <input type="password" id="loginPassword" value="sdfhsdfsdhfk" style="width:200px;position:relative; left:10px;"" />
-            <br />
+            <span class="dialogText">Username </span>
+            <input type="text" id="loginUsername" value="paul.naismith" style="width:160px; position:relative; left:10px; margin-bottom:15px;"  />
+             <br /> 
+            <span class="dialogText">Password</span> 
+            <input type="password" id="loginPassword" value="sdfhsdfsdhfk" style="width:160px;position:relative; left:10px;  margin-bottom:15px;" />
             <br />
             <input type="button" id="loginOk" class="dialogButton" value="Ok" />
             <input type="button" id="loginCancel" class="dialogButton" value="Cancel" />
-            <br /><br />
         </div>
 
     </div>
  
 
+    <!-- ------------------------------------------------- -->
+    <!-- Progress page -->
+    <!-- ------------------------------------------------- -->
+
+    <div class="popUpArea" id="pageProgress" style=" z-index:20;"> 
+
+        <div class="dialogWindow" id="dialogProgress">
+            <span class="pageTitle">Information</span>
+            <span class="dialogText" style="width:90%; margin-bottom:30px;" id="progressText1">Requesting script details...</span>
+        </div>
+
+    </div>
+
+
       <!-- ------------------------------------------------- -->
       <!-- ------------------------------------------------- -->
       <div id="header" class="header">
-            <!-- <img id="logo" src="https://portalvhdsh8lgrj68ld12q.blob.core.windows.net/androidimages/eRxExpress.jpg"/>  -->
-            <img alt="" id="logo" src="images/eRxExpress.jpg" style="height:30px;cursor: pointer;"/>
+            <img alt="" id="logo" src="images/eRxExpress.jpg" style="cursor: pointer; padding-top:5px;"/>
             <!--
             <span class="eRxGreen" style="font-size:32pt;">e</span>
             <span class="eRxBlue" style="font-size:32pt;">Rx</span>
             <span class="eRxGreen" style="">></span>
             <span class="eRxBlue" style="font-style:italic; font-weight:bold;">EXPRESS</span>
             -->
-            <button id="signIn" class="accountButton" style="position:absolute; margin-right:4px;">Sign In</button>
-            <button id="signOut" class="accountButton" style="position:absolute; margin-right:4px; visibility:hidden;">Sign Out</button>
+            <div style="position:fixed; right:0; top:5px;">
+                <button id="signIn" class="accountButton" style="position:absolute; margin-right:4px;">Sign In</button>
+                <button id="signOut" class="accountButton" style="position:absolute; margin-right:4px; visibility:hidden;">Sign Out</button>
+            </div>
       </div>
 
       
@@ -114,8 +150,16 @@
       
            <div class="contentArea" id="pageHome" style="top:80px;">
           
-             <span class="pageTitleText" style="font-size:18pt;">
-                 Welcome to eRx eXpress
+             <span class="pageTitleText" style="font-size:16pt;">
+                 Welcome to eRx
+                 <span class="eRxGreen" style="font-size:inherit;">></span>
+                 <span class="eRxBlue" style="font-style:italic; font-size:inherit;">EXPRESS</span>
+                 <!--
+                 <span class="eRxGreen" style="font-size:inherit;">e</span>
+                 <span class="eRxBlue" style="font-size:inherit;">Rx</span>
+                 <span class="eRxGreen" style="font-size:inherit;">></span>
+                 <span class="eRxBlue" style="font-style:italic; font-size:inherit;font-weight:bold;">EXPRESS</span>
+                 -->
                  <br />
              </span>
 
@@ -142,30 +186,30 @@
 
              <span class="pageTitle">Select Drug</span>
 
-             <div style="width:80%; margin: 0 auto;"> 
+             <div style="width:80%; margin:0 auto; margin-bottom:20px;"> 
                   <span class="pageText" style="width:120px;">
                      Please select the drugs from your script that you would like to order from a pharmacy.
                   </span>
-               <br /><br />
+               <br />
              </div>
-           
-                <ol id="selectDrug" style="text-align:right;">
+
+             <ol id="selectDrug" style="text-align:right; margin-bottom:15px;">
                   <li class="ui-widget-content">
                       <span class="listItemFirstRow">AMOXYCILLIN CAP 250mg</span><br /> 
-                      <span class="listItemSecondRow">20 Capsules, 3 Repeats left</span>
+                      <span class="listItemSecondRow">20 Capsules</span>
                           </li>
                   <li class="ui-widget-content">
                       <span class="listItemFirstRow">LIPITOR TAB 10 mg</span><br />
-                      <span class="listItemSecondRow">30 Tablets, No Repeat left</span>
+                      <span class="listItemSecondRow">30 Tablets</span>
                   </li>
+                  <!--
                    <li class="ui-widget-content">
                       <span class="listItemFirstRow">INDOCID CAP 25 mg</span><br />
                       <span class="listItemSecondRow">200 Capsules, 2 Repeats left</span>
                   </li>
-                  
+                  -->
                 </ol>
          
-              <br />
               <input type="button" id="selDrugOk" class="okButton" value="Continue" />
               <input type="button" id="selDrugCancel" class="cancelButton" value="Back" />
 
@@ -177,16 +221,14 @@
           <div class="contentArea" id="pagePharmacy">    
               <span class="pageTitle">Select Pharmacy</span>
               
-             <div style="width:80%; margin: 0 auto;"> 
+             <div style="width:80%; margin: 0 auto; margin-bottom:20px;"> 
                   <span class="pageText" style="width:120px;">
                      Please select the pharmacy where you would like to place your order. 
-                      Select from the list below or search for another pharmacy.
-                     
                   </span>
-               <br /><br />
+               
              </div>
               
-                 <ol id="selectPharmacy" style="text-align:right;">
+                 <ol id="selectPharmacy" style="text-align:right; margin:15px;">
 
                      <li class="ui-widget-content">
                       <span class="listItemFirstRow">Amcal Pharmacy</span><br />
@@ -199,7 +241,7 @@
                       <span class="listItemSecondRow">189 Union Rd, Ascot Vale<br /> 
                           </span>
                   </li>
-                  
+<!--                  
                    <li class="ui-widget-content">
                       <span class="listItemFirstRow">National Pharmacies</span><br />
                       <span class="listItemSecondRow">218 Union Rd, Ascot Vale<br />
@@ -211,9 +253,8 @@
                       <span class="listItemSecondRow">550 Mt Alexander Rd, Ascot Vale<br />
                       </span>
                   </li>
-                     <br />
-                  
-                    <li class="ui-widget-content">
+-->
+                    <li class="ui-widget-content" id="otherPharmacy" style="margin:top:25px;">
                       <span class="listItemFirstRow">Other Pharmacy</span><br />
                       <span class="listItemSecondRow">Search for another pharmacy...<br />
                           </span>
@@ -221,8 +262,6 @@
 
                 </ol>
               
-              <br />
-         
              <input type="button" id="selPharmacyOk" class="okButton" value="Continue" />
              <input type="button" id="selPharmacyCancel" class="cancelButton" value="Back" />
          </div>
@@ -231,7 +270,7 @@
          <!-- ------------------------------------------------- -->
 
       
-         <div class="contentArea" id="pageConfirm">    
+         <div class="contentArea" id="pageRequest">    
          
              <span class="pageTitle">Send Request to Pharmacy</span>
 
@@ -244,10 +283,10 @@
              <br />
              
              <span class="pageTextBold">Your Pickup Date</span> <br />
-             <input type="text" id="requesDate" value="23 May 2013" class="inputControl"/>
+             <input type="text" id="requestDate" value="23 May 2013" class="inputControl"/>
              <br />
              <span class="pageTextBold">Your Pickup Time</span><br />
-              <input type="text" id="requesTime" value="2:30pm" class="inputControl"/>
+              <input type="text" id="requestTime" value="2:30pm" class="inputControl"/>
              <br />
 
              <span class="pageTextBold">Your message to the pharmacy</span><br />
@@ -255,8 +294,8 @@
              </textarea>
               
               <br />
-              <input type="button" id="confirmOk" class="okButton" value="Send Request" />
-              <input type="button" id="confirmCancel" class="cancelButton" value="Back" />
+              <input type="button" id="requestOk" class="okButton" value="Send Request" />
+              <input type="button" id="requestCancel" class="cancelButton" value="Back" />
 
          </div>
 
@@ -268,7 +307,7 @@
              <span class="pageTitle">Request sent</span>
 
              <span class="pageText" style="width:120px;">
-                 Your request has been sent to the following pharmacy:<br />
+                 Your request has been successfully sent to the following pharmacy:<br />
                  <br />
                  <b>Ascot Vale Pharmacy</b><br />
                  <!--
@@ -374,6 +413,14 @@
             GetScriptDetails();
         });
 
+
+        function requestScriptData() {
+            var ok;
+            hideDialog("dialogProgress");
+
+            showPage("pageDrug");
+         }
+
         function ScanCode() {
 
             initScriptData();
@@ -382,8 +429,12 @@
 
             // GetScriptId();
 
+            showDialog("dialogProgress", "Requesting script details...");
+            setTimeout(function () {
+                requestScriptData();
+            }, 2000);
 
-            
+
             scriptID = "";
 
             // show scanned SCID, ID
@@ -397,8 +448,6 @@
             $("#scanCode").text('Id: ' + $('#ScriptId').val());
             hideElement("scanCode");
             */
-
-            showPage("pageDrug");
         }
 
 
@@ -519,7 +568,8 @@
             setTheme(pid_eRx);
             // setTheme(pid_priceline);
 
-            homePage();
+            // homePage();
+            newScript();
             // showPage("pageDrug");
         }
 
@@ -581,18 +631,37 @@
 
             // --------------------------------------------------
 
-            function closeLoginDialog() {
+            function hideDialog(id) {
                 DisableDialog();
-                hideElement("dialogLogin");
+                hideElement(id);
+            }
+
+            function showDialog(id, title) {
+                if (title.length > 0) {
+                    $("#progressText1").text(title);
+                    // $("#progressText1").html(title);
+                }
+
+                EnableDialog();
+                show_container(id);
+            }
+
+            function processSignIn() {
+                var ok;
+                hideDialog("dialogProgress");
             }
 
             function doSignIn() {
-                EnableDialog();
-                show_container('dialogLogin');
+    
+                showDialog("dialogProgress", "Signing-in...");
+                setTimeout(function () {
+                    processSignIn(); 
+                }, 2000);
             }
 
+
             $("#signIn").click(function () {
-                doSignIn();
+                showDialog("dialogLogin", "");
             });
 
             $("#signOut").click(function () {
@@ -608,34 +677,35 @@
             });
 
             $("#loginCancel").click(function () {
-                closeLoginDialog();
+                hideDialog("dialogLogin");
                 signInFromRequest = false;
             });
 
             $("#loginOk").click(function () {
 
                 // validate
-
+                doSignIn();
                 signedIn = true;
+
+                // update button
                 hideElement("signIn");
                 showElement("signOut");
 
-                // update button
 
-                closeLoginDialog();
+                hideDialog("dialogLogin");
 
                 if (signInFromRequest) {
                     signInFromRequest = false;
-                    doPageCompleted();
+                    doSendRequest();
                 }
             });
 
 
-            $("#sttingsOk").click(function () {
+            $("#settingsOk").click(function () {
 
                 // update app...
 
-                closeLoginDialog();
+                // hideDialog("dialogLogin");
             });
 
 
@@ -689,7 +759,7 @@
             }
         
             $("#selPharmacyOk").click(function () {
-                showPage("pageConfirm");
+                showPage("pageRequest");
             });
 
             $("#selPharmacyCancel").click(function () {
@@ -701,18 +771,33 @@
                 showPage("pageCompleted");
             }
 
-            $("#confirmOk").click(function () {
+            function sendRequestToPharmacy() {
+                var ok;
+
+                hideDialog("dialogProgress");
+                doPageCompleted()
+            }
+
+            function doSendRequest() {
+
+                showDialog("dialogProgress", "Sending request...");
+                setTimeout(function () {
+                    sendRequestToPharmacy();
+                }, 2000);
+            }
+
+            $("#requestOk").click(function () {
 
                 if (!signedIn) {
                     signInFromRequest = true;
-                    doSignIn();
+                    showDialog("dialogLogin", "");
                 }
                 else {
-                    doPageCompleted()
+                    doSendRequest();
                 }
             });
         
-            $("#confirmCancel").click(function () {
+            $("#requestCancel").click(function () {
                 showPage("pagePharmacy");
             });
         

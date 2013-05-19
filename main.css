@@ -36,7 +36,7 @@
 /* create style for id !!!!! */
 
 .listItemFirstRow {
-    font-size:14pt;
+    font-size:13pt;
     font-weight:bold;
     margin-right:20px;
 }
@@ -61,7 +61,7 @@
 #selectDrug li 
 { margin: 5px; 
   padding: 8px; 
-  font-size: 14px; 
+  font-size: 13px; 
   height: 34px; 
   color:#0268B2;
   text-align:left;
@@ -94,7 +94,7 @@
 #selectPharmacy li 
 { margin: 5px; 
   padding: 8px; 
-  font-size: 14px; 
+  font-size: 13px; 
   height: 34px; 
   color:#0268B2;
   text-align:left;
@@ -252,16 +252,20 @@
 .eRxBlue
 {
     font-family:Calibri;
-    font-size:24pt;
+    font-size:22pt;
     font-weight:normal;
     color:#0268B2;
+    margin:0;
+    padding:0;
 }
 
 .eRxGreen {
     font-family:Calibri;
-    font-size:15pt;
+    font-size:12pt;
     font-weight:normal;
     color:#4FA34D;
+    margin:0;
+    padding:0;
 }
 
 
@@ -314,26 +318,27 @@
 
 .popUpArea {
     
-    z-index:3;
+    z-index:30;
     position: absolute;
     width: 100%;
     height: 80%;
-    top: 20%;
+    top: 10%;
     background-color:transparent;
     text-align: center;
     padding-top: 0px;
     color: black;
-    font-size: 14pt;
+    font-size: 10pt;
     visibility:hidden;
 }
 
 .dialogWindow {
-    z-index:4;
+    z-index:31;
     position:relative;
     top:20%;
     border:1px solid #597bc3; 
     width:90%; 
     margin:0 auto; 
+    padding-bottom:10px;
     box-shadow: 10px 10px 5px #BBB;
     background-color:white;
     opacity:1;
@@ -390,7 +395,7 @@
 
 
 .dialogButton {
-   width:100px;
+   width:90px;
    padding:5px;
    height:30px; 
    border-width:1px; 
@@ -455,9 +460,15 @@
 }
 
 .pageText {
-     font-size:12pt;
+     font-size:11pt;
      color:#0268B2;
 }
+
+.dialogText {
+     font-size:11pt;
+     color:#0268B2;
+}
+
 
 .pageTextBold {
      font-size:12pt;
