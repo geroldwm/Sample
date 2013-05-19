@@ -134,7 +134,6 @@
                 <button id="signOut" class="accountButton" style="position:absolute; margin-right:4px; visibility:hidden;">Sign Out</button>
             </div>
       </div>
-
       
       <div id="background" class="backgroundImage">
       </div>
@@ -165,8 +164,15 @@
 
              
              <div style="width:70%; margin-left:auto; margin-right:auto; padding-top:30px;">
-
-                <span class="pageText">
+             <!--
+                <span style="font-family: Symbols;">
+                abcdefghilmnopqrstuvwxz<br />
+                ABCDEFGHIJKLMNOPQRSTUVXYZ<br />
+                0123456789<br />
+                a,S
+                </span>
+                 -->   
+                    <span class="pageText">
                      Please scan the QR code to select your drugs and send a request to a pharmacy for pick-up.
                  </span>
                  <br /><br />
@@ -268,7 +274,6 @@
 
          <!-- ------------------------------------------------- -->
          <!-- ------------------------------------------------- -->
-
       
          <div class="contentArea" id="pageRequest">    
          
@@ -277,7 +282,6 @@
                 <div style="width:80%; margin: 0 auto;"> 
                   <span class="pageText" style="width:120px;">
                      Please specify a date and time for collecting the drugs from the pharmacy. 
-                     You can also leave a message with special instructions.
                   </span>
              </div>
              <br />
@@ -297,6 +301,45 @@
               <input type="button" id="requestOk" class="okButton" value="Send Request" />
               <input type="button" id="requestCancel" class="cancelButton" value="Back" />
 
+         </div>
+
+
+         <!-- ------------------------------------------------- -->
+         <!-- ------------------------------------------------- -->
+      
+         <div class="contentArea" id="pageAbout">    
+         
+             <span class="pageTitle">About</span>
+
+                <div style="width:95%; margin: 0 auto; margin-bottom:15px; text-align:left;"> 
+                  <span class="pageText" style="font-size:9pt;">
+                     This is an UI prototype for a mobile phone application to provide functionality around eRx Express.
+                     Transactions with services are currently only simulated.
+                     <br />
+                     <br />
+                     The application was written using HTML5 to provide a platform-independent solution and then
+                     compiled into packages for all mobile phone platforms (Windows, Android, Apple, Blackberry etc.) using Adbobe PhoneGap.
+                     <br /><br />
+                     For more information please contact Gerold Martens at FRED.
+                     </span>
+             </div>
+              <input type="button" id="aboutClose" class="okButton" value="Close" />
+              
+         </div>
+
+
+            <div class="contentArea" id="pageSettings">    
+         
+             <span class="pageTitle">Settings</span>
+
+                <div style="width:95%; margin: 0 auto; margin-bottom:15px;"> 
+                  <span class="pageText" style="font-size:10pt;">
+                     Placeholde only
+                     </span>
+             </div>
+             <br />
+             <input type="button" id="settingsClose" class="okButton" value="Close" />
+              
          </div>
 
          <!-- ------------------------------------------------- -->
@@ -357,9 +400,21 @@
      </div> 
          
      <div id="footer" class="footer">
-        <button id="optNew" class="optionButton">New Script</button>
+        <div class="optionArea">
+            <button id="optNew" class="optionButton">,</button>
+            <span>New Script</span>
+        </div>
         <!-- <button id="optHistory" class="optionButton" style="position:relative; left:100px;">History</button> -->
-        <button id="optSettings" class="optionButton" style="position:absolute; right:0px;">Settings</button>
+        
+        <div class="optionArea" style="position:absolute; top:0px; right:88px;">
+            <button id="optAbout" class="optionButton" >d</button>
+            <span>About</span>
+        </div>
+
+        <div class="optionArea" style="position:absolute; top:0px; right:0px;">
+            <button id="optSettings" class="optionButton" >S</button>
+            <span>Settings</span>
+        </div>
      </div>
 
       <!-- Use JAVASCRITPT object ??????? -->
@@ -386,6 +441,7 @@
         var scannedSCID = "";
         var scriptID = "";
 
+        var tempPage = " ";
         var currentPage = " ";
 
         var themeSettings = {};
@@ -671,11 +727,7 @@
             });
 
 
-            $("#optSettings").click(function () {
-                EnableDialog();
-                show_container('dialogSettings');
-            });
-
+            
             $("#loginCancel").click(function () {
                 hideDialog("dialogLogin");
                 signInFromRequest = false;
@@ -737,6 +789,30 @@
             $("#optNew").click(function () {
                 newScript();
             });
+
+
+            $("#optAbout").click(function () {
+                tempPage = currentPage;
+                showPage("pageAbout");
+                
+            });
+
+            $("#aboutClose").click(function () {
+                showPage(tempPage);
+            });
+
+
+            $("#optSettings").click(function () {
+                tempPage = currentPage;
+                showPage("pageSettings");
+            });
+
+
+            $("#settingsClose").click(function () {
+                showPage(tempPage);
+            });
+
+
 
             $("#selectDrug").click(function () {
                 ShowDrugs();
